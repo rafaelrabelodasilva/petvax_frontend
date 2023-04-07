@@ -51,7 +51,7 @@
                 >
               </div>
               <button type="submit" class="btn me-3">Login</button>
-              <a href="#">Criar uma conta</a>
+              <router-link to="/signup">Crie uma conta</router-link>
             </form>
           </div>
           </div>
