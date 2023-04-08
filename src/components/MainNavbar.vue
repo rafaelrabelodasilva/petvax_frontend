@@ -17,8 +17,11 @@
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <button class="btn btn-outline-secondary">Sair</button>
+                    <li class="nav-item mx-2">
+                        <button class="btn">Novo pet</button>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <button class="btn">Sair</button>
                     </li>
                 </ul>
             </div>
@@ -44,7 +47,7 @@ export default {
 }
 
 .btn {
-  background-color: #0e8388;
-  color: white;
+    background-color: #2E4F4F;
+    color: white;
 }
 </style>

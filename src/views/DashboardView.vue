@@ -1,12 +1,12 @@
 <template>
   <div class="dashboard">
-  <MainNavbar class="px-5" />
+  <MainNavbar class="px-5 mb-5" />
 
   <div
-    class="container d-flex align-items-center vh-100 justify-content-center"
+    class="container d-flex vh-100 justify-content-center"
     id="container"
   >
-  <div class="row align-items-center">
+  <div class="row">
     <div class="col">
       <PetCard />
     </div>
