@@ -31,7 +31,7 @@ export default {
 <style scoped>
 
 .dashboard {
-  background-color: #cbe4de;
+  /* background-color: #cbe4de; */
 }
 
 .navbar {
@@ -48,12 +48,12 @@ export default {
   color: white;
 }
 
-@media (max-width: 1400px) {
+/* @media (max-width: 1400px) {
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
 max-width: 1320px;
 padding: 0;
 box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15), inset 0 -1px 0 rgba(255,255,255,0.15);
 }
-}
+} */
 
 </style>
