@@ -18,7 +18,7 @@
                 <div>
                 <button type="button" class="btn btn-success me-2">Ver carteirinha</button>
                 <button type="button" class="btn btn-primary me-2">Editar</button>
-                <button type="button" class="btn btn-danger me-2">Apagar</button>
+                <button type="button" class="btn btn-danger me-2">Remover</button>
                 </div>
             </div>
         </div>

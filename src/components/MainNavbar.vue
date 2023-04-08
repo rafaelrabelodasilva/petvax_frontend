@@ -18,9 +18,6 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item mx-2">
-                        <button class="btn">Novo pet</button>
-                    </li>
-                    <li class="nav-item mx-2">
                         <button class="btn">Sair</button>
                     </li>
                 </ul>
