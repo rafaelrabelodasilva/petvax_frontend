@@ -18,7 +18,7 @@
                     <div>
                         <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#modalVerCarteirinha">Ver carteirinha</button>
                         <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#modalEditarCarteirinha">Editar</button>
-                        <button type="button" class="btn btn-danger me-2">Remover</button>
+                        <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#modalDeletaPet">Remover</button>
                     </div>
                 </div>
             </div>
@@ -91,19 +91,41 @@
                     </div>
                     </div>
                 </div>
+            </div>
+
+            <div v-show="showModalDeletarPet" class="modal fade" 
+                        id="modalDeletaPet"  
+                        aria-hidden="true"
+                        tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Remover pet</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-1">Você tem certeza?</p>
+                        <p class="mb-1">Após a exclusão não será possível recuperar os dados do pet.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                    </div>
                 </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-  name: "PetCard",
-  data() {
-    return {
-      showModalCarteirinha: false,
-      showModalEditarCarteirinha: false,
-    };
-  },
+    name: "PetCard",
+    data() {
+        return {
+            showModalCarteirinha: false,
+            showModalEditarCarteirinha: false,
+            showModalDeletarPet: false,
+        };
+    },
 };
 </script>
