@@ -162,7 +162,7 @@
 
               <div class="col-8">
                 <label for="moreInfoPet" class="form-label"
-                  >Outras informações</label
+                  >Informações adicionais</label
                 >
                 <input
                   type="text"
