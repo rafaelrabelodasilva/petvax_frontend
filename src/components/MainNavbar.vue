@@ -44,7 +44,8 @@ export default {
 }
 
 .btn {
-    background-color: #2E4F4F;
-    color: white;
+    /* background-color: #2E4F4F; */
+    background-color: #CBE4DE;
+    color: rgb(0, 0, 0);
 }
 </style>
