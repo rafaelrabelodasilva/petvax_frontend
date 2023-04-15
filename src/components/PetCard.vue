@@ -166,7 +166,7 @@ export default {
 };
 </script>
 
-<style scope>
+<style scoped>
 
 .card {
     box-shadow: 9px 9px 7px 4px rgba(0, 0, 0, 0.1);
