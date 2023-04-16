@@ -34,10 +34,6 @@ export default {
 </script>
 
 <style scoped>
-.navbar {
-  background-color: #2c3333;
-}
-
 .navbar-brand,
 .navbar-toggler-icon {
   color: white;

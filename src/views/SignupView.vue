@@ -79,7 +79,7 @@
   </div>
 </template>
   
-  <style scoped>
+<style scoped>
 #container {
   background-color: #cbe4de;
 }
