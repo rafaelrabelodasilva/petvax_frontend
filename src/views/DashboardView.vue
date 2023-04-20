@@ -1,28 +1,30 @@
 <template>
-  <div class="dashboard">
+  <div class="">
     <MainNavbar class="px-5 mb-5" />
     <div class="container d-flex justify-content-end mb-5">
+      <div class="col text-uppercase fs-5 fw-bold mb-3">
+                        Últimos visitantes
+                    </div>
       <button
-        class="btn cadastrar"
-        data-bs-target="#exampleModalToggle"
-        data-bs-toggle="modal"
-      >
+        class="btn btn-primary"
+        data-bs-target="#cadastrarPet"
+        data-bs-toggle="modal">
         Cadastrar novo pet
       </button>
     </div>
 
     <div
-      v-show="showModal"
+      v-show="showCadastrarPet"
       class="modal fade"
-      id="exampleModalToggle"
+      id="cadastrarPet"
       aria-hidden="true"
-      aria-labelledby="exampleModalToggleLabel"
+      aria-labelledby="dadosPet"
       tabindex="-1"
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+            <h1 class="modal-title fs-5" id="dadosPet">
               Dados do pet
             </h1>
             <button
@@ -90,14 +92,14 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-danger"
+              class="btn btn-secondary"
               data-bs-dismiss="modal"
             >
               Cancelar
             </button>
             <button
               class="btn btn-primary"
-              data-bs-target="#exampleModalToggle2"
+              data-bs-target="#enderecoPet"
               data-bs-toggle="modal"
             >
               Próxima etapa
@@ -109,7 +111,7 @@
 
     <div
       class="modal fade"
-      id="exampleModalToggle2"
+      id="enderecoPet"
       aria-hidden="true"
       aria-labelledby="exampleModalToggleLabel2"
       tabindex="-1"
@@ -231,13 +233,13 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-danger"
+              class="btn btn-warning"
               data-bs-dismiss="modal"
             >
               Cancelar
             </button>
             <button
-              class="btn btn-warning"
+              class="btn btn-secondary"
               data-bs-target="#exampleModalToggle"
               data-bs-toggle="modal"
             >
@@ -358,6 +360,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -373,7 +376,7 @@ export default {
   },
   data() {
     return {
-      showModal: false,
+      showCadastrarPet: false,
     };
   },
 };
@@ -381,25 +384,4 @@ export default {
 
 <style scoped>
 
-.navbar {
-  background-color: #2c3333;
-}
-
-.navbar-brand,
-.navbar-toggler-icon {
-  color: white;
-}
-
-.cadastrar {
-  background-color: #0e8388;
-  color: white;
-}
-
-/* @media (max-width: 1400px) {
-.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-max-width: 1320px;
-padding: 0;
-box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15), inset 0 -1px 0 rgba(255,255,255,0.15);
-}
-} */
 </style>

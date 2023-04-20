@@ -17,8 +17,9 @@
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item mx-2">
-                        <button class="btn">Sair</button>
+                    <li class="nav-item">
+                        <router-link to="/dashboard" class="mx-2 text-white">Dashboard</router-link>
+                        <a class="mx-2 text-white">Sair</a>
                     </li>
                 </ul>
             </div>
@@ -34,6 +35,10 @@ export default {
 </script>
 
 <style scoped>
+.navbar {
+  background-color: #2E4F4F;
+}
+
 .navbar-brand,
 .navbar-toggler-icon {
   color: white;

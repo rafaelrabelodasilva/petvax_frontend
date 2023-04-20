@@ -1,102 +1,139 @@
 <template>
-    <div class="card mb-3" style="max-width: 540px">
-        <div class="row g-0">
-            <div class="col-md-4 d-flex align-items-center">
-                <img src="../assets/gato_sentado_sem_fundo.png" class="img-fluid rounded-start" alt="..." />
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Yuumi</h5>
-                    <div>
-                        <p class="card-text mb-0">
-                            <ul class="list-unstyled">
-                              <li>Nasceu em: 19/08/2020</li>
-                              <li>Idade: 2 anos e 8 meses</li>
-                              <li>Raça: SRD</li>
-                              <li>Castrado: Sim</li>
-                            </ul>
-                        </p>
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#modalVerCarteirinha">Ver carteirinha</button>
-                        <button type="button" class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#modalDeletaPet">Remover</button>
-                    </div>
-                </div>
-            </div>
+  <div class="card mb-3" style="max-width: 380px">
+    <div class="row g-0">
+      <div class="col-md-4 d-flex align-items-center">
+        <img
+          src="../assets/gato_sentado_sem_fundo.png"
+          class="img-fluid rounded-start"
+          alt="..."
+        />
+      </div>
 
-            <div v-show="showModalCarteirinha" class="modal fade" id="modalVerCarteirinha" aria-hidden="true" tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered">
-
-                <div class="modal-content">
-                            
-                  <div class="modal-header">
-                    <h5 class="modal-title">Carteirinha do pet</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-
-                  <div class="modal-body">
-                    <div class="container-fluid">
-
-                      <div class="container d-flex flex-column justify-content-center align-items-center mb-4">
-                        <img src="../assets/yuumi.png" alt="" class="d-flex" style="width: 10rem; border-radius: 50%;">
-                        <h4 class="text-uppercase">Yuumi</h4>
-                      </div>
-
-                      <div class="container mb-3">
-                        <h6>Dados do pet</h6>
-                        <ul class="d-flex flex-column align-items-start p-0 m-0">
-                          <li>Nome do pet: Yuumi</li>
-                          <li>Espécie: Felina</li>
-                          <li>Gênero: Fêmea</li>
-                          <li>Nascimento: 19/08/2020</li>
-                          <li>Raça: Sem raça definida (SRD)</li>
-                        </ul>
-                      </div>
-
-                      <div class="container mb-3">
-                        <h6>Dados do responsável</h6>
-                        <ul class="d-flex flex-column align-items-start p-0 m-0">
-                          <li>Nome: Rafael Rabelo da Silva</li>
-                          <li>Contato principal: (48) 99656-1400</li>
-                          <li>Contato adicional: não informado</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Procedimentos</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-
-
-            <div v-show="showModalDeletarPet" class="modal fade" 
-                        id="modalDeletaPet"  
-                        aria-hidden="true"
-                        tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Remover pet</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="mb-1">Você tem certeza?</p>
-                        <p class="mb-1">Após a exclusão não será possível recuperar os dados do pet.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger">Remover</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Yuumi</h5>
+          <div class="card-text mb-0">
+            <ul class="list-unstyled">
+              <li>Idade: 2 anos e 8 meses</li>
+              <li>Raça: SRD</li>
+              <li>Castrado: Sim</li>
+            </ul>
+          </div>
         </div>
+      </div>
+      <div class="card-footer">
+        <a
+          class="me-3"
+          data-bs-toggle="modal"
+          data-bs-target="#modalVerCarteirinha"
+          >Ver carteirinha</a
+        >
+        <router-link to="/procedimentos" class="me-3"
+          >Procedimentos</router-link
+        >
+        <a class="me-3" data-bs-toggle="modal" data-bs-target="#modalDeletaPet"
+          >Remover</a
+        >
+      </div>
     </div>
+  </div>
+
+  <div
+    v-show="showModalCarteirinha"
+    class="modal fade"
+    id="modalVerCarteirinha"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="container d-flex justify-content-end">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="container-fluid">
+            <div
+              class="container d-flex flex-column justify-content-center align-items-center mb-4"
+            >
+              <img
+                src="../assets/yuumi.png"
+                alt=""
+                class="d-flex"
+                style="width: 10rem; border-radius: 50%"
+              />
+              <h4 class="text-uppercase">Yuumi</h4>
+            </div>
+
+            <div class="container mb-3">
+              <h6>Dados do pet</h6>
+              <ul class="d-flex flex-column align-items-start p-0 m-0">
+                <li>Nome do pet: Yuumi</li>
+                <li>Espécie: Felina</li>
+                <li>Gênero: Fêmea</li>
+                <li>Nascimento: 19/08/2020</li>
+                <li>Raça: Sem raça definida (SRD)</li>
+              </ul>
+            </div>
+
+            <div class="container mb-3">
+              <h6>Dados do responsável</h6>
+              <ul class="d-flex flex-column align-items-start p-0 m-0">
+                <li>Nome: Rafael Rabelo da Silva</li>
+                <li>Contato principal: (48) 99656-1400</li>
+                <li>Contato adicional: não informado</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                      <router-link to="/procedimentos" class="link-light">Procedimentos</router-link>
+                    </button>
+                    
+                  </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div
+    v-show="showModalDeletarPet"
+    class="modal fade"
+    id="modalDeletaPet"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Remover pet</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-1">Você tem certeza?</p>
+          <p class="mb-1">
+            Após a exclusão não será possível recuperar os dados do pet.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-danger">Remover</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
