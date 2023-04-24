@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3" style="max-width: 380px">
+  <div class="card mb-3" style="max-width: 360px" v-for="pet in petList" :key="pet._id">
     <div class="row g-0">
       <div class="col-md-4 d-flex align-items-center">
         <img
@@ -11,12 +11,11 @@
 
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title mb-3">Yuumi</h5>
+          <h5 class="card-title mb-3">{{ pet.petName }}</h5>
           <div class="card-text mb-0">
             <ul class="list-unstyled">
-              <li>Idade: 2 anos e 8 meses</li>
-              <li>Raça: SRD</li>
-              <li>Castrado: Sim</li>
+              <li>Nascimento: {{ pet.petBirth }}</li>
+              <li>Raça: {{ pet.petBreed }}</li>
             </ul>
           </div>
         </div>
@@ -26,12 +25,14 @@
           class="me-3"
           data-bs-toggle="modal"
           data-bs-target="#modalVerCarteirinha"
+          @click="openModalCarteirinha(pet._id)"
           >Ver carteirinha</a
         >
         <router-link to="/procedimentos" class="me-3"
           >Procedimentos</router-link
         >
         <a class="me-3" data-bs-toggle="modal" data-bs-target="#modalDeletaPet"
+        @click="openModalDeletaPet(pet._id)"
           >Remover</a
         >
       </div>
@@ -66,37 +67,46 @@
                 class="d-flex"
                 style="width: 10rem; border-radius: 50%"
               />
-              <h4 class="text-uppercase">Yuumi</h4>
+              <h4 class="text-uppercase">
+              {{
+                petList.find((pet) => pet._id === petIdSelected)?.petName
+              }}
+            </h4>
             </div>
 
             <div class="container mb-3">
               <h6>Dados do pet</h6>
               <ul class="d-flex flex-column align-items-start p-0 m-0">
-                <li>Nome do pet: Yuumi</li>
-                <li>Espécie: Felina</li>
-                <li>Gênero: Fêmea</li>
-                <li>Nascimento: 19/08/2020</li>
-                <li>Raça: Sem raça definida (SRD)</li>
+                <li>
+                Nome do pet: {{
+                  petList.find((pet) => pet._id === petIdSelected)?.petName
+                }}
+              </li>
+              <li>
+                Espécie: {{
+                  petList.find((pet) => pet._id === petIdSelected)?.petSpecies
+                }}
+              </li>
+              <li>
+                Gênero: {{
+                  petList.find((pet) => pet._id === petIdSelected)?.petGender
+                }}
+              </li>
+                <li>Nascimento: {{ petList.find((pet) => pet._id === petIdSelected)?.petBirth }}</li>
+                <li>Raça: {{ petList.find((pet) => pet._id === petIdSelected)?.petBreed }}</li>
               </ul>
             </div>
 
             <div class="container mb-3">
               <h6>Dados do responsável</h6>
               <ul class="d-flex flex-column align-items-start p-0 m-0">
-                <li>Nome: Rafael Rabelo da Silva</li>
-                <li>Contato principal: (48) 99656-1400</li>
-                <li>Contato adicional: não informado</li>
+                <li>Nome: {{ petList.find((pet) => pet._id === petIdSelected)?.petResFirstName + ' ' + petList.find((pet) => pet._id === petIdSelected)?.petRespLastName }}</li>
+                <li>Contato principal: {{ petList.find((pet) => pet._id === petIdSelected)?.petRespContact1 }}</li>
+                <li>Contato adicional: {{ petList.find((pet) => pet._id === petIdSelected)?.petRespContact2 }}</li>
               </ul>
             </div>
           </div>
         </div>
-
-        <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">
-                      <router-link to="/procedimentos" class="link-light">Procedimentos</router-link>
-                    </button>
-                    
-                  </div> -->
       </div>
     </div>
   </div>
@@ -129,7 +139,7 @@
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
             Cancelar
           </button>
-          <button type="button" class="btn btn-danger">Remover</button>
+          <button type="button" class="btn btn-danger" @click="deletarPet()">Remover</button>
         </div>
       </div>
     </div>
@@ -137,6 +147,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "PetCard",
   components: {},
@@ -144,49 +156,53 @@ export default {
     return {
       showModalCarteirinha: false,
       showModalDeletarPet: false,
+      petList: [],
+      petIdSelected: null,
+      petToDelete: null // guarda o pet que será excluído
     };
+  },
+  methods: {
+    async list() {
+      try {
+        const res = await axios.get("/pet");
+        this.petList = res.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    openModalDeletaPet(petId) {
+    // encontra o pet pelo id
+    const pet = this.petList.find((pet) => pet._id === petId);
+    // guarda o pet que será excluído
+    this.petToDelete = pet;
+    // exibe o modal de exclusão
+    this.showModalDeletarPet = true;
+    },
+    async deletarPet() {
+      const petId = this.petToDelete._id;
+      try {
+        await axios.delete(`/pet/${petId}`);
+      // remove o pet excluído da lista
+        this.petList = this.petList.filter((pet) => pet._id !== petId);
+        location.reload(); //Preciso melhorar esta parte porque fiz como se fosse um f5 na tela
+      } catch (error) {
+      console.error(error);
+      }
+    },
+    openModalCarteirinha(petId) {
+      this.petIdSelected = petId;
+      this.showModalCarteirinha = true;
+    },
+  },
+  mounted() {
+    this.list();
   },
 };
 </script>
 
 <style scoped>
 .card {
-  /* background-image: linear-gradient(
-  0deg,
-  hsl(182deg 81% 29%) 0%,
-  hsl(182deg 47% 38%) 11%,
-  hsl(180deg 34% 45%) 22%,
-  hsl(178deg 27% 51%) 33%,
-  hsl(176deg 27% 56%) 44%,
-  hsl(174deg 27% 62%) 56%,
-  hsl(172deg 27% 68%) 67%,
-  hsl(170deg 28% 73%) 78%,
-  hsl(168deg 29% 79%) 89%,
-  hsl(166deg 32% 85%) 100%
-); */
-}
-
-.card {
   box-shadow: 9px 9px 7px 4px rgba(0, 0, 0, 0.1);
-}
-
-.col-md-4 {
-  /* background-color: #0E8388; */
-  /* background-color: #2C3333; */
-  /* background-color: #2E4F4F; */
-  /* background-image: linear-gradient(
-    0deg,
-    hsl(182deg 81% 29%) 0%,
-    hsl(182deg 47% 38%) 11%,
-    hsl(180deg 34% 45%) 22%,
-    hsl(178deg 27% 51%) 33%,
-    hsl(176deg 27% 56%) 44%,
-    hsl(174deg 27% 62%) 56%,
-    hsl(172deg 27% 68%) 67%,
-    hsl(170deg 28% 73%) 78%,
-    hsl(168deg 29% 79%) 89%,
-    hsl(166deg 32% 85%) 100%
-  ); */
 }
 
 #photo-pet {
@@ -194,7 +210,6 @@ export default {
   border-radius: 50%;
   border-style: solid;
   border-width: 6px;
-  /* border-color: rgb(255, 255, 255); */
   border-color: #eff5f5;
 }
 
