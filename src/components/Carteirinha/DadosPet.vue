@@ -18,6 +18,7 @@
                                 <th scope="col">Gênero</th>
                                 <th scope="col">Nascimento</th>
                                 <th scope="col">Raça</th>
+                                <th scope="col">Espécie</th>
                                 <th scope="col">Peso do pet (kg)</th>
                             </tr>
                         </thead>
@@ -27,6 +28,7 @@
                                 <td>Felina</td>
                                 <td>19/08/2020</td>
                                 <td>SRD (Sem raça definida)</td>
+                                <td>Felina</td>
                                 <td>Não informado</td>
                             </tr>
                         </tbody>
