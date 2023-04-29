@@ -12,18 +12,6 @@
         <div class="container mb-4">
             <VacinasPet class="" />
         </div>
-
-        <div class="container mb-4">
-            <VermifugacaoPet class="" />
-        </div>
-
-        <div class="container mb-4">
-            <AntipulgasPet class="" />
-        </div>
-
-        <div class="container mb-5">
-            <OutrosProcedimentosPet class="" />
-        </div>
         
     </div>
 </template>
@@ -33,19 +21,13 @@
 import MainNavbar from "../components/MainNavbar.vue";
 import DadosPet from "../components/Carteirinha/DadosPet.vue";
 import VacinasPet from "../components/Carteirinha/VacinasPet.vue"
-import VermifugacaoPet from "../components/Carteirinha/VermifugacaoPet.vue"
-import AntipulgasPet from "../components/Carteirinha/AntipulgasPet.vue"
-import OutrosProcedimentosPet from "../components/Carteirinha//OutrosProcedimentosPet.vue"
 
 export default {
     name: "ProcedimentosPetView",
     components: {
         MainNavbar,
         DadosPet,
-        VacinasPet,
-        VermifugacaoPet,
-        AntipulgasPet,
-        OutrosProcedimentosPet
+        VacinasPet
     },
 };
 

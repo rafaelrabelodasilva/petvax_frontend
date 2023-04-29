@@ -2,7 +2,6 @@
 
 <div class="card">
     <div class="card-body">
-
         <div class="container text-center">
             <div class="row">
                 <div class="col text-uppercase fs-5 fw-bold mb-3">

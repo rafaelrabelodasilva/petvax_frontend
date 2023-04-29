@@ -77,6 +77,15 @@
                 <label for="nascimentoPet" class="form-label">Nascimento</label>
                 <input v-model="form.petBirth" type="date" class="form-control" id="nascimentoPet" />
               </div>
+
+              <div class="col-md-4">
+                <label for="castradoPet" class="form-label">Castrado?</label>
+                <select v-model="form.petCastrated" id="castradoPet" class="form-select">
+                  <option>Sim</option>
+                  <option>Não</option>
+                </select>
+              </div>
+
             </form>
           </div>
 
@@ -359,6 +368,7 @@ export default {
         petGender: "",
         petBirth: "",
         petBreed: "",
+        petCastrated: "",
         petAdStreet: "",
         petAdNeighborhood: "",
         petAdNumber: "",
