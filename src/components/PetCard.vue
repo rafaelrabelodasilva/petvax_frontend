@@ -1,6 +1,7 @@
 <template>
   <div class="card mb-3" style="max-width: 360px" v-for="pet in petList" :key="pet._id">
     <div class="row g-0">
+
       <div class="col-md-4 d-flex align-items-center">
         <img
           src="../assets/gato_sentado_sem_fundo.png"
@@ -31,6 +32,7 @@
         <router-link to="/procedimentos" class="me-3"
           >Procedimentos</router-link
         >
+
         <a class="me-3" data-bs-toggle="modal" data-bs-target="#modalDeletaPet"
         @click="openModalDeletaPet(pet._id)"
           >Remover</a
@@ -74,8 +76,8 @@
             </h4>
             </div>
 
-            <div class="container mb-3">
-              <h6>Dados do pet</h6>
+            <div class="container mb-4">
+              <h6 class="text-uppercase">Dados do pet</h6>
               <ul class="d-flex flex-column align-items-start p-0 m-0">
                 <li>
                 Nome do pet: {{
@@ -94,15 +96,18 @@
               </li>
                 <li>Nascimento: {{ petList.find((pet) => pet._id === petIdSelected)?.petBirth }}</li>
                 <li>Raça: {{ petList.find((pet) => pet._id === petIdSelected)?.petBreed }}</li>
+                <li>Peso do pet: {{ petList.find((pet) => pet._id === petIdSelected)?.petWeight }}</li>
+                <li>Pet castrado: {{ petList.find((pet) => pet._id === petIdSelected)?.petCastrated }}</li>
               </ul>
             </div>
 
             <div class="container mb-3">
-              <h6>Dados do responsável</h6>
+              <h6 class="text-uppercase">Dados do responsável</h6>
               <ul class="d-flex flex-column align-items-start p-0 m-0">
-                <li>Nome: {{ petList.find((pet) => pet._id === petIdSelected)?.petResFirstName + ' ' + petList.find((pet) => pet._id === petIdSelected)?.petRespLastName }}</li>
-                <li>Contato principal: {{ petList.find((pet) => pet._id === petIdSelected)?.petRespContact1 }}</li>
-                <li>Contato adicional: {{ petList.find((pet) => pet._id === petIdSelected)?.petRespContact2 }}</li>
+                <li>Nome: {{ petList.find((pet) => pet._id === petIdSelected)?.petResponsible.petRespFirstName + ' ' + petList.find((pet) => pet._id === petIdSelected)?.petResponsible.petRespLastName }}</li>
+                <li>Contato principal: {{ petList.find((pet) => pet._id === petIdSelected)?.petResponsible.petRespContact1 }}</li>
+                <li>Contato adicional: {{ petList.find((pet) => pet._id === petIdSelected)?.petResponsible.petRespContact2 }}</li>
+                <li>Responsável principal: {{ petList.find((pet) => pet._id === petIdSelected)?.petResponsible.petRespPrincipal }}</li>
               </ul>
             </div>
           </div>

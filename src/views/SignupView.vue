@@ -144,10 +144,6 @@ export default {
 </script>
 
 <style scoped>
-#container {
-  background-color: #2E4F4F;
-}
-
 .btn {
   background-color: #0e8388;
   color: white;

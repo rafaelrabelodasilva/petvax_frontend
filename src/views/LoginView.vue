@@ -119,10 +119,6 @@ export default {
 
 <style scoped>
 
-#container {
-  background-color: #CBE4DE;
-}
-
 .btn {
   background-color: #0E8388;
   color: white;

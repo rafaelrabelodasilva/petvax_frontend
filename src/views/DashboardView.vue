@@ -1,5 +1,4 @@
 <template>
-  <div class="">
     <MainNavbar class="px-5 mb-5" />
     <div class="container d-flex justify-content-end mb-5">
       <div class="col text-uppercase fs-5 fw-bold mb-3">
@@ -20,8 +19,6 @@
           <PetCard />
       </div>
     </div>
-    
-  </div>
 </template>
 
 <script>
