@@ -1,10 +1,7 @@
 <template>
-  <MainNavbar class="px-5 mb-5" />
   <div class="container">
-    <div class="col text-uppercase fs-3 fw-bold mb-5 mt-5">Procedimentos</div>
 
-    <div class="container vh-100">
-      <div class="card mb-3" id="vacina">
+      <div class="card my-3" id="vacina">
         <div class="card-body">
           <div class="container text-center">
             <div class="row">
@@ -166,35 +163,34 @@
         </div>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>
 import axios from "axios";
-import MainNavbar from "../components/MainNavbar.vue";
+
 export default {
-  name: "ProcedimentosPetView",
-  components: {
-    MainNavbar,
-  },
+  name: "ProcedimentosPet",
   data() {
     return {
-      procedureList: [],
+      procedureList: []
     };
   },
   methods: {
-    async list() {
+    async list(petId) {
       try {
-        const res = await axios.get("/procedure");
+        const res = await axios.get("/procedure", {
+          params: { petId }
+        });
         this.procedureList = res.data;
       } catch (error) {
         console.log(error);
       }
-    },
+    }
   },
   mounted() {
-    this.list();
-  },
+    this.list(this.$route.params.petId);
+  }
 };
 </script>
 

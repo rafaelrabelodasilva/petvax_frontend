@@ -29,8 +29,13 @@
           @click="openModalCarteirinha(pet._id)"
           >Ver carteirinha</a
         >
-        <router-link to="/procedimentos" class="me-3"
-          >Procedimentos</router-link
+
+        <a
+          class="me-3"
+          data-bs-toggle="modal"
+          data-bs-target="#modalVerProcedimentos"
+          @click="openModalProcedimentos(pet._id)"
+          >Procedimentos</a
         >
 
         <a class="me-3" data-bs-toggle="modal" data-bs-target="#modalDeletaPet"
@@ -117,6 +122,35 @@
   </div>
 
   <div
+    v-show="showModalProcedimentos"
+    class="modal fade"
+    id="modalVerProcedimentos"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Procedimentos do pet Yuumi</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container">
+            <ProcedimentosPet/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
     v-show="showModalDeletarPet"
     class="modal fade"
     id="modalDeletaPet"
@@ -153,13 +187,17 @@
 
 <script>
 import axios from "axios";
+import ProcedimentosPet from "../components/ProcedimentosPetView.vue";
 
 export default {
   name: "PetCard",
-  components: {},
+  components: {
+    ProcedimentosPet
+  },
   data() {
     return {
       showModalCarteirinha: false,
+      showModalProcedimentos: false,
       showModalDeletarPet: false,
       petList: [],
       petIdSelected: null,
@@ -197,6 +235,12 @@ export default {
     openModalCarteirinha(petId) {
       this.petIdSelected = petId;
       this.showModalCarteirinha = true;
+    },
+
+    openModalProcedimentos(petId) {
+      this.petIdSelected = petId;
+      this.showModalProcedimentos = true;
+      console.log(petId)
     },
   },
   mounted() {
