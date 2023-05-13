@@ -366,26 +366,29 @@ export default {
         petName: "",
         petSpecies: "",
         petGender: "",
-        petBirth: "",
         petBreed: "",
+        petWeight: "",
+        petBirth: "",
         petCastrated: "",
-        petAdStreet: "",
-        petAdNeighborhood: "",
-        petAdNumber: "",
-        petAdInfo: "",
-        petAdCep: "",
+
+        petAdStreet: "Rua algum lugar",
+        petAdNeighborhood: "Bairro santo",
+        petAdNumber: "485",
+        petAdInfo: "Perto da rua",
+        petAdCep: "88804-320",
         petAdCity: "",
         petAdState: "",
-        petResFirstName: "",
-        petRespLastName: "",
-        petRespContact1: "",
-        petRespContact2: ""
+
+        petResFirstName: "Rosana",
+        petRespLastName: "Silva",
+        petRespContact1: "4899655",
+        petRespContact2: "4899655"
       }
     };
   },
   methods: {
     cadastrarPet() {
-        // console.log(this.form) //Exibe no console o objeto form para saber se ele está recendo a informação que queremos
+        console.log(this.form) //Exibe no console o objeto form para saber se ele está recendo a informação que queremos
         axios.post('/pet', this.form)
         .then(async (res) => {
           const resp = await res.data;

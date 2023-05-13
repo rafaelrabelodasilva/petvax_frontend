@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3" style="max-width: 360px" v-for="pet in petList" :key="pet._id">
+  <div class="card d-flex mx-3 my-3" style="max-width: 360px" v-for="pet in petList" :key="pet._id">
     <div class="row g-0">
 
       <div class="col-md-4 d-flex align-items-center">
@@ -21,9 +21,9 @@
           </div>
         </div>
       </div>
-      <div class="card-footer">
+      <div class="card-footer d-flex align-items-center justify-content-around flex-wrap">
         <a
-          class="me-3"
+          class=""
           data-bs-toggle="modal"
           data-bs-target="#modalVerCarteirinha"
           @click="openModalCarteirinha(pet._id)"
@@ -31,14 +31,14 @@
         >
 
         <a
-          class="me-3"
+          class=""
           data-bs-toggle="modal"
           data-bs-target="#modalVerProcedimentos"
           @click="openModalProcedimentos(pet._id)"
           >Procedimentos</a
         >
 
-        <a class="me-3" data-bs-toggle="modal" data-bs-target="#modalDeletaPet"
+        <a class="" data-bs-toggle="modal" data-bs-target="#modalDeletaPet"
         @click="openModalDeletaPet(pet._id)"
           >Remover</a
         >
@@ -143,7 +143,165 @@
 
         <div class="modal-body">
           <div class="container">
-            <ProcedimentosPet/>
+            <div class="card my-3" id="vacina">
+      <div class="card-body">
+        <div class="container text-center">
+          <div class="row">
+            <div class="col text-uppercase fs-5 fw-bold mb-3">Vacinas</div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Nome da vacina</th>
+                    <th scope="col">Observação</th>
+                    <th scope="col">Próximo reforço</th>
+                    <th scope="col">Responsável</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(procedure, index) in procedureList"
+                    :key="procedure._id"
+                  >
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ procedure.petVaccine.vaccData }}</td>
+                    <td>{{ procedure.petVaccine.vaccName }}</td>
+                    <td>{{ procedure.petVaccine.vaccAddInfo }}</td>
+                    <td>{{ procedure.petVaccine.vaccNextOne }}</td>
+                    <td>{{ procedure.petVaccine.vaccRespDoctor }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3" id="vermifugo">
+      <div class="card-body">
+        <div class="container text-center">
+          <div class="row">
+            <div class="col text-uppercase fs-5 fw-bold mb-3">Vermifugação</div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Nome do vermífugo</th>
+                    <th scope="col">Dose</th>
+                    <th scope="col">Observação</th>
+                    <th scope="col">Próximo reforço</th>
+                    <th scope="col">Responsável</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(procedure, index) in procedureList"
+                    :key="procedure._id"
+                  >
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ procedure.petVermifugation.vermData }}</td>
+                    <td>{{ procedure.petVermifugation.vermName }}</td>
+                    <td>{{ procedure.petVermifugation.vermQty }}</td>
+                    <td>{{ procedure.petVermifugation.vermAddInfo }}</td>
+                    <td>{{ procedure.petVermifugation.vermNextOne }}</td>
+                    <td>{{ procedure.petVermifugation.vermRespDoctor }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3" id="antipulgas">
+      <div class="card-body">
+        <div class="container text-center">
+          <div class="row">
+            <div class="col text-uppercase fs-5 fw-bold mb-3">Antipulgas</div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Nome do antipulgas</th>
+                    <th scope="col">Observação</th>
+                    <th scope="col">Próximo reforço</th>
+                    <th scope="col">Responsável</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(procedure, index) in procedureList"
+                    :key="procedure._id"
+                  >
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ procedure.petAntiFlea.fleaData }}</td>
+                    <td>{{ procedure.petAntiFlea.fleaName }}</td>
+                    <td>{{ procedure.petAntiFlea.fleaAddInfo }}</td>
+                    <td>{{ procedure.petAntiFlea.fleaNextOne }}</td>
+                    <td>{{ procedure.petAntiFlea.fleaRespDoctor }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-3" id="procedimentos">
+      <div class="card-body">
+        <div class="container text-center">
+          <div class="row">
+            <div class="col text-uppercase fs-5 fw-bold mb-3">
+              Outros procedimentos
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Nome do procedimento</th>
+                    <th scope="col">Observação</th>
+                    <th scope="col">Peso do pet (kg)</th>
+                    <th scope="col">Responsável</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="(procedure, index) in procedureList"
+                    :key="procedure._id"
+                  >
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ procedure.petOtherProcedure.otherDate }}</td>
+                    <td>{{ procedure.petOtherProcedure.otherName }}</td>
+                    <td>{{ procedure.petOtherProcedure.otherAddInfo }}</td>
+                    <td>{{ procedure.petOtherProcedure.otherPetWeight }}</td>
+                    <td>{{ procedure.petOtherProcedure.otherRespDoctor }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
           </div>
         </div>
       </div>
@@ -178,7 +336,7 @@
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
             Cancelar
           </button>
-          <button type="button" class="btn btn-danger" @click="deletarPet()">Remover</button>
+          <button type="button" class="btn btn-danger" @click="deletarPet()" data-bs-dismiss="modal">Remover</button>
         </div>
       </div>
     </div>
@@ -187,13 +345,10 @@
 
 <script>
 import axios from "axios";
-import ProcedimentosPet from "../components/ProcedimentosPetView.vue";
 
 export default {
   name: "PetCard",
-  components: {
-    ProcedimentosPet
-  },
+  components: {},
   data() {
     return {
       showModalCarteirinha: false,
@@ -201,7 +356,10 @@ export default {
       showModalDeletarPet: false,
       petList: [],
       petIdSelected: null,
-      petToDelete: null // guarda o pet que será excluído
+      petToDelete: null, // guarda o pet que será excluído
+      procedureList: [],
+      petId: null,
+      error: null, // adicionado para armazenar mensagens de erro
     };
   },
   methods: {
@@ -211,36 +369,46 @@ export default {
         this.petList = res.data;
       } catch (error) {
         console.log(error);
+        this.error = "Ocorreu um erro ao buscar a lista de pets.";
       }
     },
     openModalDeletaPet(petId) {
-    // encontra o pet pelo id
-    const pet = this.petList.find((pet) => pet._id === petId);
-    // guarda o pet que será excluído
-    this.petToDelete = pet;
-    // exibe o modal de exclusão
-    this.showModalDeletarPet = true;
+      // encontra o pet pelo id
+      const pet = this.petList.find((pet) => pet._id === petId);
+      // guarda o pet que será excluído
+      this.petToDelete = pet;
+      // exibe o modal de exclusão
+      this.showModalDeletarPet = true;
     },
     async deletarPet() {
       const petId = this.petToDelete._id;
       try {
         await axios.delete(`/pet/${petId}`);
-      // remove o pet excluído da lista
+        // remove o pet excluído da lista localmente
         this.petList = this.petList.filter((pet) => pet._id !== petId);
-        location.reload(); //Preciso melhorar esta parte porque fiz como se fosse um f5 na tela
+        this.showModalDeletarPet = false; // fecha o modal de exclusão
       } catch (error) {
-      console.error(error);
+        console.error(error);
+        this.error = "Ocorreu um erro ao excluir o pet.";
       }
     },
     openModalCarteirinha(petId) {
       this.petIdSelected = petId;
       this.showModalCarteirinha = true;
     },
-
-    openModalProcedimentos(petId) {
+    async openModalProcedimentos(petId) {
       this.petIdSelected = petId;
-      this.showModalProcedimentos = true;
-      console.log(petId)
+      try {
+        const res = await axios.get(`/procedure/pet/${petId}`);
+        this.procedureList = res.data;
+        this.showModalProcedimentos = true;
+      } catch (error) {
+        console.error(error);
+        this.error = "Ocorreu um erro ao buscar os procedimentos do pet.";
+      }
+    },
+    clearError() {
+      this.error = null;
     },
   },
   mounted() {
@@ -248,6 +416,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 .card {

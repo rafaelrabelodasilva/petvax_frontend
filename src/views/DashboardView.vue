@@ -1,4 +1,5 @@
 <template>
+  <div class="min-vh-100">
     <MainNavbar class="px-5 mb-5" />
     <div class="container d-flex justify-content-end mb-5">
       <div class="col text-uppercase fs-5 fw-bold mb-3">
@@ -14,11 +15,12 @@
 
     <ModalCadastrarPet/>
 
-    <div class="container d-flex vh-100 justify-content-center" id="container">
-      <div>
-          <PetCard />
+    <div class="container" id="container">
+      <div class="d-flex flex-wrap justify-content-center">
+          <PetCard/>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -42,3 +44,7 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+</style>
