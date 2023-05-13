@@ -19,7 +19,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <router-link to="/dashboard" class="mx-2 text-white">Dashboard</router-link>
-                        <a class="mx-2 text-white">Sair</a>
+                        <a @click="logout()" class="mx-2 text-white">Sair</a>
                     </li>
                 </ul>
             </div>
@@ -31,6 +31,12 @@
 
 export default {
     name: 'MainNavbar',
+    methods: {
+    logout() { //Função adicionada no botão sair que remove o token do localStorage e volta para a tela de login
+      localStorage.removeItem('user_token') //Remove o token do localStorage
+      this.$router.push('/login') //E retorna para a página de login
+    }
+  }
 }
 </script>
 

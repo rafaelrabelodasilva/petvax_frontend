@@ -132,6 +132,7 @@ export default {
       axios.post('/user', this.form)
       .then(async (res) => {
         const resp = await res.data;
+        console.log(this.form)
         console.log(resp)
       })
       .catch((error) => {
