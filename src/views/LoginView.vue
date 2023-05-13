@@ -29,6 +29,11 @@
                   aria-describedby="emailHelp"
                   placeholder="Digite seu e-mail"
                 />
+                <article v-if="emailError" class="text-danger mb-3">
+                <div class="message-body">
+                  {{ emailError }}
+                </div>
+              </article>
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label"
@@ -41,9 +46,14 @@
                   id="exampleInputPassword1"
                   placeholder="Digite sua senha"
                 />
+                <article v-if="passError" class="text-danger mb-3">
+                <div class="message-body">
+                  {{ passError }}
+                </div>
+              </article>
               </div>
 
-              <article v-if="alertError" class="text-danger">
+              <article v-if="alertError" class="text-danger mb-3">
                 <div class="message-body">
                   {{ alertError }}
                 </div>
@@ -78,6 +88,8 @@ export default {
   data() {
     return {
       alertError: '',
+      passError: '',
+      emailError: '',
       form: {
         //Pega o v-model adicionado nos imputs e coloca a informação dentro dos objetos email e password
         email: '',
@@ -86,34 +98,37 @@ export default {
     };
   },
   methods: {
-    //Métodos do vue.js
-    login() {
-      console.log(this.form) //Exibe no console o objeto form para saber se ele está recendo a informação que queremos
-      
-      if(this.form.email === '') { //Se o e-mail não estiver preenchido
-        this.alertError = 'Oops. Por favor informe seu e-mail' //Então recebe essa string no alertError
-        return null
-      }
-      
-      if(this.form.password === '') {//Se a senha não estiver preenchida
-        this.alertError = 'Oops. Por favor informe sua senha' //Então recebe essa string no alertError
-        return null
-      }
+  login() {
+    //Utilizado desestruturação para extrair email e password diretamente do objeto this.form
+    const { email, password } = this.form; 
 
+    //Utilizado a função trim() para remover espaços em branco no início e no final do email e password, evitando problemas de validação
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+
+    //Limpar o alerta de erro antes de fazer uma nova tentativa de login:
+    this.alertError = '';
+
+    //Utilizado o operador ternário para definir os valores de erro em uma única linha
+    this.emailError = !trimmedEmail ? 'Informe seu e-mail' : '';
+    this.passError = !trimmedPassword ? 'Informe sua senha' : '';
+
+    if (trimmedEmail && trimmedPassword) {
       axios
-      .post('/session', this.form)
-      .then(async (res) => {
-        const resp = await res.data;
-        console.log(resp) //Se tudo ocorreu bem irá exibir o token do usuário no console
-        localStorage.setItem('user_token', resp.user_token); //Irá gravar no localStorage do navegador do cliente o token de autenticação
-        this.$router.push('/dashboard'); //Após autenticado será redirecionado para a rota dashboard
-      })
-      .catch((error) => {
-        this.alertError = 'E-mail ou senha incorretos'
-        console.error(error)
-      })
-    },
+        .post('/session', this.form)
+        .then(async (res) => {
+          const resp = await res.data;
+          console.log(resp);
+          localStorage.setItem('user_token', resp.user_token);
+          this.$router.push('/dashboard');
+        })
+        .catch((error) => {
+          this.alertError = 'E-mail ou senha incorretos';
+          console.error(error);
+        });
+    }
   },
+},
 };
 </script>
 
