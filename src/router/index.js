@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router' //Para remover a # da URL
 import HomeView from '../views/HomeView.vue'
 
 const routes = [
@@ -31,17 +31,17 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/DashboardView.vue')
   },
-  {
-    path: '/procedimentos',
-    name: 'procedimentos',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/ProcedimentosPetView.vue')
-  }
+  // {
+  //   path: '/procedimentos',
+  //   name: 'procedimentos',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../components/ProcedimentosPetView.vue')
+  // }
 ]
 
-const router = createRouter({
+const router = createRouter({ //Para remover a # da URL
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
