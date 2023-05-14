@@ -12,11 +12,11 @@
 
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title mb-3">{{ pet.petName }}</h5>
+          <h5 class="card-title">{{ pet.petName }}</h5>
           <div class="card-text mb-0">
             <ul class="list-unstyled">
-              <li>Nascimento: {{ pet.petBirth }}</li>
-              <li>Raça: {{ pet.petBreed }}</li>
+              <li>Idade: 4 meses</li>
+              <li>Último procedimento: Antipulgas</li>
             </ul>
           </div>
         </div>

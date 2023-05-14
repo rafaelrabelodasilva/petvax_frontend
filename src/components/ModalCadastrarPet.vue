@@ -371,18 +371,18 @@ export default {
         petBirth: "",
         petCastrated: "",
 
-        petAdStreet: "Rua algum lugar",
-        petAdNeighborhood: "Bairro santo",
-        petAdNumber: "485",
-        petAdInfo: "Perto da rua",
-        petAdCep: "88804-320",
+        petAdStreet: "",
+        petAdNeighborhood: "",
+        petAdNumber: "",
+        petAdInfo: "",
+        petAdCep: "",
         petAdCity: "",
         petAdState: "",
 
-        petResFirstName: "Rosana",
-        petRespLastName: "Silva",
-        petRespContact1: "4899655",
-        petRespContact2: "4899655"
+        petResFirstName: "",
+        petRespLastName: "",
+        petRespContact1: "",
+        petRespContact2: ""
       }
     };
   },

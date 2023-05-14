@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'jquery/dist/jquery.js'
 import 'bootstrap/dist/js/bootstrap.js'
 
+import '@fortawesome/fontawesome-free/css/all.css';
+
 createApp(App).use(router).mount('#app')
 
 axios.defaults.baseURL = 'http://localhost:3000';
