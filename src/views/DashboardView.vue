@@ -16,35 +16,20 @@
 
       <div class="dropdown">
         <button
-          class="btn btn-primary dropdown-toggle"
+          class="btn btn-primary"
           type="button"
-          data-bs-toggle="dropdown"
           aria-expanded="false"
+          data-bs-target="#novoOutrosProced"
+        data-bs-toggle="modal"
         ><i class="fas fa-plus me-2"></i>
           Novo procedimento
         </button>
-        <ul class="dropdown-menu">
-          <li><button class="dropdown-item" data-bs-target="#novaVacina"
-        data-bs-toggle="modal"><i class="fas fa-plus me-2"></i>Vacinas</button></li>
-          <li><button class="dropdown-item" data-bs-target="#novoVermif"
-        data-bs-toggle="modal"><i class="fas fa-plus me-2"></i>Vermifugação</button></li>
-          <li><button class="dropdown-item" data-bs-target="#novoAntipulgas"
-        data-bs-toggle="modal"><i class="fas fa-plus me-2"></i>Antipulgas</button></li>
-          <li><button class="dropdown-item" data-bs-target="#novoOutrosProced"
-        data-bs-toggle="modal"><i class="fas fa-plus me-2"></i>Outros procedimentos</button></li>
-        </ul>
       </div>
     </div>
 
     <ModalCadastrarPet />
 
-    <ModalNovaVacina />
-
-    <ModalNovoVermif />
-
-    <ModalNovoAntipulgas />
-
-    <ModalNovoOutrosProced />
+    <NovoProcedimento />
 
     <div class="container" id="container">
       <div class="d-flex flex-wrap justify-content-center">
@@ -58,10 +43,7 @@
 import MainNavbar from "../components/MainNavbar.vue";
 import PetCard from "../components/PetCard.vue";
 import ModalCadastrarPet from "../components/ModalCadastrarPet.vue";
-import ModalNovaVacina from "../components/Procedimento/NovaVacina.vue";
-import ModalNovoVermif from "../components/Procedimento/NovoVermifugo.vue"
-import ModalNovoAntipulgas from "../components/Procedimento/NovoAntipulgas.vue"
-import ModalNovoOutrosProced from "../components/Procedimento/NovoOutrosProced.vue"
+import NovoProcedimento from "../components/Procedimento/NovoProcedimento.vue"
 
 export default {
   name: "DashboardView",
@@ -69,10 +51,7 @@ export default {
     MainNavbar,
     PetCard,
     ModalCadastrarPet,
-    ModalNovaVacina,
-    ModalNovoVermif,
-    ModalNovoAntipulgas,
-    ModalNovoOutrosProced
+    NovoProcedimento
   },
   data() {
     return {};

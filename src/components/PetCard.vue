@@ -132,7 +132,7 @@
       <div class="modal-content">
 
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Procedimentos do pet Yuumi</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Procedimentos do pet</h1>
           <button
             type="button"
             class="btn-close"
@@ -143,7 +143,8 @@
 
         <div class="modal-body">
           <div class="container">
-            <div class="card my-3" id="vacina">
+
+            <!-- <div class="card my-3" id="vacina">
       <div class="card-body">
         <div class="container text-center">
           <div class="row">
@@ -260,15 +261,21 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="card mb-3" id="procedimentos">
+    <div class="mb-3" id="procedimentos">
       <div class="card-body">
         <div class="container text-center">
+          <div class="d-flex justify-content-end mb-3">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-primary" type="submit">Buscar</button>
+            </form>
+          </div>
           <div class="row">
-            <div class="col text-uppercase fs-5 fw-bold mb-3">
-              Outros procedimentos
-            </div>
+            <!-- <div class="col text-uppercase fs-5 fw-bold mb-3">
+              Procedimentos
+            </div> -->
           </div>
           <div class="row">
             <div class="col">
@@ -276,11 +283,12 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Data</th>
                     <th scope="col">Nome do procedimento</th>
                     <th scope="col">Observação</th>
-                    <th scope="col">Peso do pet (kg)</th>
+                    <th scope="col">Data do procedimento</th>
+                    <th scope="col">Próximo reforço</th>
                     <th scope="col">Responsável</th>
+                    <th scope="col">Opções</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -289,11 +297,15 @@
                     :key="procedure._id"
                   >
                     <th scope="row">{{ index + 1 }}</th>
-                    <td>{{ procedure.petOtherProcedure.otherDate }}</td>
-                    <td>{{ procedure.petOtherProcedure.otherName }}</td>
-                    <td>{{ procedure.petOtherProcedure.otherAddInfo }}</td>
-                    <td>{{ procedure.petOtherProcedure.otherPetWeight }}</td>
-                    <td>{{ procedure.petOtherProcedure.otherRespDoctor }}</td>
+                    <td>{{ procedure.petProcedure.procedureName }}</td>
+                    <td>{{ procedure.petProcedure.procedureAddInfo }}</td>
+                    <td>{{ procedure.petProcedure.procedureDate }}</td>
+                    <td>{{ procedure.petProcedure.procedureNextOne }}</td>
+                    <td>{{ procedure.petProcedure.procedureRespDoctor }}</td>
+                    <td>
+                      <a href="#" class="me-3"><i class="fa-regular fa-pen-to-square"></i></a>
+                      <a href="#" class=""><i class="fa-regular fa-trash-can me-2"></i></a>
+                    </td>
                   </tr>
                 </tbody>
               </table>
