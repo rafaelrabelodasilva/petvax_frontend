@@ -216,125 +216,6 @@
 
         <div class="modal-body">
           <div class="container">
-            <!-- <div class="card my-3" id="vacina">
-      <div class="card-body">
-        <div class="container text-center">
-          <div class="row">
-            <div class="col text-uppercase fs-5 fw-bold mb-3">Vacinas</div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Nome da vacina</th>
-                    <th scope="col">Observação</th>
-                    <th scope="col">Próximo reforço</th>
-                    <th scope="col">Responsável</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    v-for="(procedure, index) in procedureList"
-                    :key="procedure._id"
-                  >
-                    <th scope="row">{{ index + 1 }}</th>
-                    <td>{{ procedure.petVaccine.vaccData }}</td>
-                    <td>{{ procedure.petVaccine.vaccName }}</td>
-                    <td>{{ procedure.petVaccine.vaccAddInfo }}</td>
-                    <td>{{ procedure.petVaccine.vaccNextOne }}</td>
-                    <td>{{ procedure.petVaccine.vaccRespDoctor }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card mb-3" id="vermifugo">
-      <div class="card-body">
-        <div class="container text-center">
-          <div class="row">
-            <div class="col text-uppercase fs-5 fw-bold mb-3">Vermifugação</div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Nome do vermífugo</th>
-                    <th scope="col">Dose</th>
-                    <th scope="col">Observação</th>
-                    <th scope="col">Próximo reforço</th>
-                    <th scope="col">Responsável</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    v-for="(procedure, index) in procedureList"
-                    :key="procedure._id"
-                  >
-                    <th scope="row">{{ index + 1 }}</th>
-                    <td>{{ procedure.petVermifugation.vermData }}</td>
-                    <td>{{ procedure.petVermifugation.vermName }}</td>
-                    <td>{{ procedure.petVermifugation.vermQty }}</td>
-                    <td>{{ procedure.petVermifugation.vermAddInfo }}</td>
-                    <td>{{ procedure.petVermifugation.vermNextOne }}</td>
-                    <td>{{ procedure.petVermifugation.vermRespDoctor }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card mb-3" id="antipulgas">
-      <div class="card-body">
-        <div class="container text-center">
-          <div class="row">
-            <div class="col text-uppercase fs-5 fw-bold mb-3">Antipulgas</div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Nome do antipulgas</th>
-                    <th scope="col">Observação</th>
-                    <th scope="col">Próximo reforço</th>
-                    <th scope="col">Responsável</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    v-for="(procedure, index) in procedureList"
-                    :key="procedure._id"
-                  >
-                    <th scope="row">{{ index + 1 }}</th>
-                    <td>{{ procedure.petAntiFlea.fleaData }}</td>
-                    <td>{{ procedure.petAntiFlea.fleaName }}</td>
-                    <td>{{ procedure.petAntiFlea.fleaAddInfo }}</td>
-                    <td>{{ procedure.petAntiFlea.fleaNextOne }}</td>
-                    <td>{{ procedure.petAntiFlea.fleaRespDoctor }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
             <div class="mb-3" id="procedimentos">
               <div class="card-body">
                 <div class="container text-center">
@@ -343,7 +224,7 @@
                       <input
                         class="form-control me-2"
                         type="search"
-                        placeholder="Search"
+                        placeholder="Buscar"
                         aria-label="Search"
                       />
                       <button class="btn btn-primary" type="submit">
@@ -352,9 +233,6 @@
                     </form>
                   </div>
                   <div class="row">
-                    <!-- <div class="col text-uppercase fs-5 fw-bold mb-3">
-              Procedimentos
-            </div> -->
                   </div>
                   <div class="row">
                     <div class="col">
@@ -564,7 +442,7 @@ export default {
       procedureList: [],
       petId: null,
       error: null, // adicionado para armazenar mensagens de erro
-      showModalNovoProced: false,
+      // showModalNovoProced: false,
       showCadastrarPet: false,
       }
     },
@@ -636,8 +514,8 @@ export default {
     .then(async (res) => {
       const resp = await res.data;
       console.log(resp);
-      this.showModalNovoProced = false;
-      this.list(); // Chama o método list() para recarregar a lista de pets
+      this.showModalNovoProced = false; // Fechar o modal após a conclusão
+      this.list(); // Chamar a função list() para atualizar a lista de procedimentos
     })
     .catch((error) => {
       this.alertError = 'Ocorreu um erro.';
