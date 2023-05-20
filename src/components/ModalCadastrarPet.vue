@@ -5,7 +5,6 @@
       aria-hidden="true"
       aria-labelledby="dadosPet"
       tabindex="-1"
-      v-show="showCadastrarPet"
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -285,7 +284,7 @@
                   >Primeiro nome</label
                 >
                 <input
-                  v-model="form.petResFirstName"
+                  v-model="form.petRespFirstName"
                   type="text"
                   class="form-control"
                   id="nomeRespPet"
@@ -361,30 +360,31 @@ export default {
     name: 'ModalCadastrarPet',
     data() {
     return {
-      showCadastrarPet: false,
-      form: {
-        petName: "",
-        petSpecies: "",
-        petGender: "",
-        petBreed: "",
-        petWeight: "",
-        petBirth: "",
-        petCastrated: "",
-
-        petAdStreet: "",
-        petAdNeighborhood: "",
-        petAdNumber: "",
-        petAdInfo: "",
-        petAdCep: "",
-        petAdCity: "",
-        petAdState: "",
-
-        petResFirstName: "",
-        petRespLastName: "",
-        petRespContact1: "",
-        petRespContact2: ""
-      }
     };
+  },
+  computed: {
+    form() {
+        return {
+          petName: '',
+          petSpecies: '',
+          petGender: '',
+          petBreed: '',
+          petWeight: '',
+          petBirth: '',
+          petCastrated: '',
+          petAdStreet: '',
+          petAdNeighborhood: '',
+          petAdNumber: '',
+          petAdInfo: '',
+          petAdCep: '',
+          petAdCity: '',
+          petAdState: '',
+          petRespFirstName: '',
+          petRespLastName: '',
+          petRespContact1: '',
+          petRespContact2: ''
+        }
+      }
   },
   methods: {
     cadastrarPet() {
@@ -392,8 +392,7 @@ export default {
         axios.post('/pet', this.form)
         .then(async (res) => {
           const resp = await res.data;
-          console.log(resp)
-          // location.reload();
+          console.log(resp);
         })
         .catch((error) => {
           this.alertError = 'Ocorreu um erro.'
