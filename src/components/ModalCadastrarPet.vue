@@ -346,7 +346,9 @@
               Voltar
             </button>
 
-            <button @click="cadastrarPet()" type="button" class="btn btn-success">Salvar</button>
+            <button @click="cadastrarPet()" 
+            type="button" class="btn btn-success"
+            data-bs-dismiss="modal">Salvar</button>
           </div>
         </div>
       </div>
@@ -401,9 +403,4 @@ export default {
     },
   }
 }
-
 </script>
-
-<style scoped>
-
-</style>
