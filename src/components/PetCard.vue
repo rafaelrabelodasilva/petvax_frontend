@@ -16,7 +16,7 @@
 
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{{ pet.petName }}</h5>
+          <p class="fs-4 text card-title">{{ pet.petName }}</p>
           <div class="card-text mb-0">
             <ul class="list-unstyled">
               <li>Idade: 4 meses</li>
@@ -56,7 +56,6 @@
   </div>
 
   <div
-    v-show="showModalCarteirinha"
     class="modal fade"
     id="modalVerCarteirinha"
     aria-hidden="true"
@@ -83,13 +82,13 @@
                 class="d-flex"
                 style="width: 10rem; border-radius: 50%"
               />
-              <h4 class="text-uppercase">
+              <p class="fs-2 text text-uppercase">
                 {{ petList.find((pet) => pet._id === petIdSelected)?.petName }}
-              </h4>
+              </p>
             </div>
 
             <div class="container mb-4">
-              <h6 class="text-uppercase">Dados do pet</h6>
+              <h6 class="fs-6 text text-uppercase fw-bold">Dados do pet</h6>
               <ul class="d-flex flex-column align-items-start p-0 m-0">
                 <li>
                   Nome do pet:
@@ -138,7 +137,7 @@
             </div>
 
             <div class="container mb-3">
-              <h6 class="text-uppercase">Dados do responsável</h6>
+              <h6 class="fs-6 text text-uppercase fw-bold">Dados do responsável</h6>
               <ul class="d-flex flex-column align-items-start p-0 m-0">
                 <li>
                   Nome:
@@ -181,7 +180,6 @@
                 aria-expanded="false"
                 data-bs-target="#novoProcedimento"
                 data-bs-toggle="modal"
-                @click="openModalNovoProced()"
               >
                 <i class="fas fa-plus me-2"></i>
                 Novo procedimento
@@ -194,7 +192,6 @@
   </div>
 
   <div
-    v-show="showModalProcedimentos"
     class="modal fade"
     id="modalVerProcedimentos"
     aria-hidden="true"
@@ -288,7 +285,6 @@
   </div>
 
   <div
-    v-show="showModalDeletarPet"
     class="modal fade"
     id="modalDeletaPet"
     aria-hidden="true"
@@ -416,7 +412,9 @@
             Cancelar
           </button>
 
-          <button @click="salvarProced()" type="button" class="btn btn-success">
+          <button @click="salvarProced()" 
+          type="button" class="btn btn-success"
+          data-bs-dismiss="modal">
             Salvar
           </button>
         </div>
@@ -433,17 +431,12 @@ export default {
   components: {},
   data() {
     return {
-      showModalCarteirinha: false,
-      showModalProcedimentos: false,
-      showModalDeletarPet: false,
       petList: [],
       petIdSelected: null,
       petToDelete: null, // guarda o pet que será excluído
       procedureList: [],
       petId: null,
       error: null, // adicionado para armazenar mensagens de erro
-      // showModalNovoProced: false,
-      showCadastrarPet: false,
       }
     },
   computed: {
@@ -474,7 +467,6 @@ export default {
       // guarda o pet que será excluído
       this.petToDelete = pet;
       // exibe o modal de exclusão
-      this.showModalDeletarPet = true;
     },
     openModalNovoProced() {
       this.showModalNovoProced = true;
@@ -485,7 +477,6 @@ export default {
         await axios.delete(`/pet/${petId}`);
         // remove o pet excluído da lista localmente
         this.petList = this.petList.filter((pet) => pet._id !== petId);
-        this.showModalDeletarPet = false; // fecha o modal de exclusão
       } catch (error) {
         console.error(error);
         this.error = "Ocorreu um erro ao excluir o pet.";
@@ -494,7 +485,6 @@ export default {
     openModalCarteirinha(petId) {
       this.petIdSelected = petId;
       this.form.petId = this.petIdSelected; // Atualiza o valor de petId no formulário
-      this.showModalCarteirinha = true;
       console.log(this.petIdSelected);
     },
     async openModalProcedimentos(petId) {
@@ -503,7 +493,6 @@ export default {
       try {
         const res = await axios.get(`/procedure/pet/${petId}`);
         this.procedureList = res.data;
-        this.showModalProcedimentos = true;
       } catch (error) {
         console.error(error);
         this.error = "Ocorreu um erro ao buscar os procedimentos do pet.";
