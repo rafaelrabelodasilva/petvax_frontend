@@ -64,14 +64,6 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-body p-0 gradient">
-          <!-- <div class="container d-flex justify-content-end">
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div> -->
           <div class="container-fluid">
             <div
               class="container d-flex flex-column justify-content-center align-items-center mt-4"
