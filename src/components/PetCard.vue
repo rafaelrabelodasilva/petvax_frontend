@@ -63,24 +63,25 @@
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-        <div class="modal-body">
-          <div class="container d-flex justify-content-end">
+        <div class="modal-body p-0 gradient">
+          <!-- <div class="container d-flex justify-content-end">
             <button
               type="button"
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
-          </div>
+          </div> -->
           <div class="container-fluid">
             <div
-              class="container d-flex flex-column justify-content-center align-items-center mb-4"
+              class="container d-flex flex-column justify-content-center align-items-center mt-4"
             >
               <img
                 src="../assets/yuumi.png"
                 alt=""
                 class="d-flex"
                 style="width: 10rem; border-radius: 50%"
+                id="petPicture"
               />
               <p class="fs-2 text text-uppercase">
                 {{ petList.find((pet) => pet._id === petIdSelected)?.petName }}
@@ -174,18 +175,28 @@
             </div>
 
             <div>
-              <button
+              
+            </div>
+          </div>
+
+          <div class="modal-footer">
+          <button type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal">
+            Cancelar
+          </button>
+
+          <button
                 class="btn btn-primary"
                 type="button"
                 aria-expanded="false"
                 data-bs-target="#novoProcedimento"
                 data-bs-toggle="modal"
               >
-                <i class="fas fa-plus me-2"></i>
-                Novo procedimento
+                <i class="fas fa-plus"></i>
+                Procedimento
               </button>
-            </div>
-          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -533,6 +544,15 @@ export default {
   border-style: solid;
   border-width: 6px;
   border-color: #eff5f5;
+}
+
+#petPicture {
+  border: 6px solid #2E4F4F;
+}
+
+.gradient {
+  background: linear-gradient(0deg, rgba(255,255,255,1) 9%, rgba(46,79,79,1) 100%);
+  border-radius: 5px;
 }
 
 ul > li {
