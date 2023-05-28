@@ -333,7 +333,6 @@
     aria-hidden="true"
     aria-labelledby="novoProcedimento"
     tabindex="-1"
-    v-show="showModalNovoProced"
   >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -471,9 +470,6 @@ export default {
       this.petToDelete = pet;
       // exibe o modal de exclusão
     },
-    openModalNovoProced() {
-      this.showModalNovoProced = true;
-    },
     async deletarPet() {
       const petId = this.petToDelete._id;
       try {
@@ -506,7 +502,6 @@ export default {
     .then(async (res) => {
       const resp = await res.data;
       console.log(resp);
-      this.showModalNovoProced = false; // Fechar o modal após a conclusão
       this.list(); // Chamar a função list() para atualizar a lista de procedimentos
     })
     .catch((error) => {
