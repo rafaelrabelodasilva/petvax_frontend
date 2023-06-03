@@ -130,7 +130,9 @@
             </div>
 
             <div class="container mb-3">
-              <h6 class="fs-6 text text-uppercase fw-bold">Dados do responsável</h6>
+              <h6 class="fs-6 text text-uppercase fw-bold">
+                Dados do responsável
+              </h6>
               <ul class="d-flex flex-column align-items-start p-0 m-0">
                 <li>
                   Nome:
@@ -166,29 +168,29 @@
               </ul>
             </div>
 
-            <div>
-              
-            </div>
+            <div></div>
           </div>
 
           <div class="modal-footer">
-          <button type="button"
+            <button
+              type="button"
               class="btn btn-secondary"
-              data-bs-dismiss="modal">
-            Cancelar
-          </button>
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
 
-          <button
-                class="btn btn-primary"
-                type="button"
-                aria-expanded="false"
-                data-bs-target="#novoProcedimento"
-                data-bs-toggle="modal"
-              >
-                <i class="fas fa-plus"></i>
-                Procedimento
-              </button>
-        </div>
+            <button
+              class="btn btn-primary"
+              type="button"
+              aria-expanded="false"
+              data-bs-target="#novoProcedimento"
+              data-bs-toggle="modal"
+            >
+              <i class="fas fa-plus"></i>
+              Procedimento
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -232,8 +234,7 @@
                       </button>
                     </form>
                   </div>
-                  <div class="row">
-                  </div>
+                  <div class="row"></div>
                   <div class="row">
                     <div class="col">
                       <table class="table table-hover">
@@ -266,7 +267,10 @@
                               {{ procedure.petProcedure.procedureRespDoctor }}
                             </td>
                             <td>
-                              <a href="#" class="me-3"
+                              <a
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalEditProced"
+                                class="me-3"
                                 ><i class="fa-regular fa-pen-to-square"></i
                               ></a>
                               <a href="#" class=""
@@ -289,10 +293,87 @@
 
   <div
     class="modal fade"
-    id="modalDeletaPet"
+    id="modalEditProced"
     aria-hidden="true"
+    aria-labelledby="modalEditProced"
     tabindex="-1"
   >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalEditProced">
+            Formulário de edição de procedimento
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="procedureName" class="form-label"
+                >Nome do procedimento</label
+              >
+              <input type="text" class="form-control" id="procedureName" />
+            </div>
+
+            <div class="col-md-6">
+              <label for="procedureAddInfo" class="form-label"
+                >Observação</label
+              >
+              <input type="text" class="form-control" id="procedureAddInfo" />
+            </div>
+
+            <div class="col-md-4">
+              <label for="procedureDate" class="form-label"
+                >Data aplicação</label
+              >
+              <input type="date" class="form-control" id="procedureDate" />
+            </div>
+
+            <div class="col-md-4">
+              <label for="procedureNextOne" class="form-label"
+                >Próxima aplicação</label
+              >
+              <input type="date" class="form-control" id="procedureNextOne" />
+            </div>
+
+            <div class="col-md-4">
+              <label for="procedureRespDoctor" class="form-label"
+                >Responsável</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="procedureRespDoctor"
+              />
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Cancelar
+          </button>
+
+          <button
+            @click="editProced()"
+            type="button"
+            class="btn btn-success"
+            data-bs-dismiss="modal"
+          >
+            Salvar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalDeletaPet" aria-hidden="true" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -350,13 +431,16 @@
 
         <div class="modal-body">
           <form class="row g-3">
-
             <div class="col-md-6">
               <label for="procedureName" class="form-label"
                 >Nome do procedimento</label
               >
-              <input v-model="form.procedureName" type="text" class="form-control" id="procedureName">
-              
+              <input
+                v-model="form.procedureName"
+                type="text"
+                class="form-control"
+                id="procedureName"
+              />
             </div>
 
             <div class="col-md-6">
@@ -414,9 +498,12 @@
             Cancelar
           </button>
 
-          <button @click="salvarProced()" 
-          type="button" class="btn btn-success"
-          data-bs-dismiss="modal">
+          <button
+            @click="salvarProced()"
+            type="button"
+            class="btn btn-success"
+            data-bs-dismiss="modal"
+          >
             Salvar
           </button>
         </div>
@@ -433,31 +520,35 @@ export default {
   components: {},
   data() {
     return {
-      petList: [],
+      petList: [], //Criado array para guardar os dados da resposta data
       petIdSelected: null,
       petToDelete: null, // guarda o pet que será excluído
       procedureList: [],
       petId: null,
       error: null, // adicionado para armazenar mensagens de erro
-      }
-    },
-  computed: {
-  form() {
-    return {
-      petId: this.petIdSelected,
-      procedureName: '',
-      procedureAddInfo: '',
-      procedureDate: '',
-      procedureNextOne: '',
-      procedureRespDoctor: '',
+      procedureIdSelected: null,
     };
   },
-},
+  computed: {
+    form() {
+      return {
+        petId: this.petIdSelected,
+        procedureName: "",
+        procedureAddInfo: "",
+        procedureDate: "",
+        procedureNextOne: "",
+        procedureRespDoctor: "",
+      };
+    },
+  },
+  mounted() {
+    this.list();
+  },
   methods: {
     async list() {
       try {
-        const res = await axios.get("/pet");
-        this.petList = res.data;
+        const resposta = await axios.get("/pet");
+        this.petList = resposta.data;
       } catch (error) {
         console.log(error);
         this.error = "Ocorreu um erro ao buscar a lista de pets.";
@@ -498,23 +589,18 @@ export default {
       }
     },
     salvarProced() {
-  axios.post('/procedure', this.form)
-    .then(async (res) => {
-      const resp = await res.data;
-      console.log(resp);
-      this.list(); // Chamar a função list() para atualizar a lista de procedimentos
-    })
-    .catch((error) => {
-      this.alertError = 'Ocorreu um erro.';
-      console.error(error);
-    });
-},
-    clearError() {
-      this.error = null;
+      axios
+        .post("/procedure", this.form)
+        .then(async (res) => {
+          const resp = await res.data;
+          console.log(resp);
+          this.list(); // Chamar a função list() para atualizar a lista de procedimentos
+        })
+        .catch((error) => {
+          this.alertError = "Ocorreu um erro.";
+          console.error(error);
+        });
     },
-  },
-  mounted() {
-    this.list();
   },
 };
 </script>
@@ -534,11 +620,15 @@ export default {
 }
 
 #petPicture {
-  border: 6px solid #2E4F4F;
+  border: 6px solid #2e4f4f;
 }
 
 .gradient {
-  background: linear-gradient(0deg, rgba(255,255,255,1) 9%, rgba(46,79,79,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 9%,
+    rgba(46, 79, 79, 1) 100%
+  );
   border-radius: 5px;
 }
 

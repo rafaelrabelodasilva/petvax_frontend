@@ -34,9 +34,9 @@ export default {
     ModalCadastrarPet,
   },
   data() {
-    return {
-    };
+    return {};
   },
   methods: {},
+  mounted() {},
 };
 </script>
