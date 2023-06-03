@@ -19,22 +19,24 @@
               aria-label="Close"
             ></button>
           </div>
-
+          
           <div class="modal-body">
             <form class="row g-3">
               <div class="col-md-4">
                 <label for="nomePet" class="form-label">Nome do pet</label>
+                
                 <input
-                  v-model="form.petName"
+                  v-model="pet.petName"
                   type="text"
                   class="form-control"
                   id="nomePet"
                 />
+                
               </div>
 
               <div class="col-md-4">
                 <label for="especiePet" class="form-label">Espécie</label>
-                <select v-model="form.petSpecies" id="especiePet" class="form-select">
+                <select v-model="pet.petSpecies" id="especiePet" class="form-select">
                   <option>Canina</option>
                   <option>Felina</option>
                 </select>
@@ -42,7 +44,7 @@
 
               <div class="col-md-4">
                 <label for="generoPet" class="form-label">Gênero</label>
-                <select v-model="form.petGender" id="generoPet" class="form-select">
+                <select v-model="pet.petGender" id="generoPet" class="form-select">
                   <option>Fêmea</option>
                   <option>Macho</option>
                 </select>
@@ -50,7 +52,7 @@
 
               <div class="col-md-4">
                 <label for="racaPet" class="form-label">Raça</label>
-                <select v-model="form.petBreed" id="racaPet" class="form-select">
+                <select v-model="pet.petBreed" id="racaPet" class="form-select">
                   <option>Persa e Himalaia</option>
                   <option>Siamês</option>
                   <option>Maine Coon</option>
@@ -67,19 +69,19 @@
               <div class="col-md-4">
                 <label for="pesoPet" class="form-label">Peso do pet</label>
                 <div class="input-group">
-                <input v-model="form.petWeight" type="number" class="form-control" id="pesoPet" />
+                <input v-model="pet.petWeight" type="number" class="form-control" id="pesoPet" />
                 <span class="input-group-text">kg</span>
               </div>
               </div>
 
               <div class="col-md-4">
                 <label for="nascimentoPet" class="form-label">Nascimento</label>
-                <input v-model="form.petBirth" type="date" class="form-control" id="nascimentoPet" />
+                <input v-model="pet.petBirth" type="date" class="form-control" id="nascimentoPet" />
               </div>
 
               <div class="col-md-4">
                 <label for="castradoPet" class="form-label">Castrado?</label>
-                <select v-model="form.petCastrated" id="castradoPet" class="form-select">
+                <select v-model="pet.petCastrated" id="castradoPet" class="form-select">
                   <option>Sim</option>
                   <option>Não</option>
                 </select>
@@ -134,7 +136,7 @@
               <div class="col-6">
                 <label for="ruaPet" class="form-label">Rua</label>
                 <input
-                v-model="form.petAdStreet"
+                v-model="pet.petAdStreet"
                   type="text"
                   class="form-control"
                   id="ruaPet"
@@ -144,7 +146,7 @@
               <div class="col-6">
                 <label for="bairroPet" class="form-label">Bairro</label>
                 <input
-                  v-model="form.petAdNeighborhood"
+                  v-model="pet.petAdNeighborhood"
                   type="text"
                   class="form-control"
                   id="bairroPet"
@@ -154,7 +156,7 @@
               <div class="col-4">
                 <label for="numeroPet" class="form-label">Número</label>
                 <input
-                  v-model="form.petAdNumber"
+                  v-model="pet.petAdNumber"
                   type="text"
                   class="form-control"
                   id="numeroPet"
@@ -166,7 +168,7 @@
                   >Informações adicionais</label
                 >
                 <input
-                  v-model="form.petAdInfo"
+                  v-model="pet.petAdInfo"
                   type="text"
                   class="form-control"
                   id="moreInfoPet"
@@ -176,7 +178,7 @@
               <div class="col-3">
                 <label for="cepPet" class="form-label">CEP</label>
                 <input
-                  v-model="form.petAdCep"
+                  v-model="pet.petAdCep"
                   type="text"
                   class="form-control"
                   id="cepPet"
@@ -185,7 +187,7 @@
 
               <div class="col-5">
                 <label for="estados" class="form-label">Estado</label>
-                <select v-model="form.petAdState" id="estados" class="form-select">
+                <select v-model="pet.petAdState" id="estados" class="form-select">
                   <option value="AC">Acre</option>
                   <option value="AL">Alagoas</option>
                   <option value="AP">Amapá</option>
@@ -219,7 +221,7 @@
               <div class="col-4">
                 <label for="cidadePet" class="form-label">Cidade</label>
                 <input
-                  v-model="form.petAdCity"
+                  v-model="pet.petAdCity"
                   type="text"
                   class="form-control"
                   id="cidadePet"
@@ -278,13 +280,13 @@
           </div>
 
           <div class="modal-body">
-            <form class="row g-3">
+            <form @submit.prevent="cadastrarPet" class="row g-3">
               <div class="col-md-6">
                 <label for="nomeRespPet" class="form-label"
                   >Primeiro nome</label
                 >
                 <input
-                  v-model="form.petRespFirstName"
+                  v-model="pet.petRespFirstName"
                   type="text"
                   class="form-control"
                   id="nomeRespPet"
@@ -296,7 +298,7 @@
                   >Sobrenome</label
                 >
                 <input
-                  v-model="form.petRespLastName"
+                  v-model="pet.petRespLastName"
                   type="text"
                   class="form-control"
                   id="sobrenomeRespPet"
@@ -308,7 +310,7 @@
                   >Contato principal</label
                 >
                 <input
-                  v-model="form.petRespContact1"
+                  v-model="pet.petRespContact1"
                   type="text"
                   class="form-control"
                   id="contato1RespPet"
@@ -320,7 +322,7 @@
                   >Contato adicional</label
                 >
                 <input
-                v-model="form.petRespContact2"
+                v-model="pet.petRespContact2"
                   type="text"
                   class="form-control"
                   id="contato2RespPet"
@@ -360,41 +362,45 @@ import axios from "axios";
 
 export default {
     name: 'ModalCadastrarPet',
+    props: ['listFunction'],
     data() {
     return {
+      pet: {
+            petName: '',
+            petSpecies: '',
+            petGender: '',
+            petBreed: '',
+            petWeight: '',
+            petBirth: '',
+            petCastrated: '',
+            petAdStreet: '',
+            petAdNeighborhood: '',
+            petAdNumber: '',
+            petAdInfo: '',
+            petAdCep: '',
+            petAdCity: '',
+            petAdState: '',
+            petRespFirstName: '',
+            petRespLastName: '',
+            petRespContact1: '',
+            petRespContact2: ''
+          }
     };
   },
   computed: {
     form() {
         return {
-          petName: '',
-          petSpecies: '',
-          petGender: '',
-          petBreed: '',
-          petWeight: '',
-          petBirth: '',
-          petCastrated: '',
-          petAdStreet: '',
-          petAdNeighborhood: '',
-          petAdNumber: '',
-          petAdInfo: '',
-          petAdCep: '',
-          petAdCity: '',
-          petAdState: '',
-          petRespFirstName: '',
-          petRespLastName: '',
-          petRespContact1: '',
-          petRespContact2: ''
         }
       }
   },
   methods: {
     cadastrarPet() {
-        console.log(this.form) //Exibe no console o objeto form para saber se ele está recendo a informação que queremos
-        axios.post('/pet', this.form)
+        axios.post('/pet', this.pet)
         .then(async (res) => {
           const resp = await res.data;
           console.log(resp);
+          alert('Salvo com sucesso!')
+          this.listFunction();
         })
         .catch((error) => {
           this.alertError = 'Ocorreu um erro.'
