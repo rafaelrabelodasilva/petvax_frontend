@@ -20,6 +20,9 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+      
+    - name: Install bootstrap
+      run: npm i bootstrap@5.3.0
 
     - name: Start API server
       run: npm run serve  # Substitua "serve" pelo comando de inicialização do servidor API no seu projeto
