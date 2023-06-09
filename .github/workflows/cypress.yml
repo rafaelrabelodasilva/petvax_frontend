@@ -1,0 +1,34 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
+
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Install bootstrap
+      run: npm i bootstrap@5.3.0
+
+    - name: Start API server
+      run: npm run serve  # Substitua "serve" pelo comando de inicialização do servidor API no seu projeto
+
+    - name: Wait for server to start
+      run: sleep 10  # Ajuste o tempo de espera conforme necessário para garantir que o servidor API esteja em execução
+
+    - name: Run Cypress tests
+      run: npm run cy:run
