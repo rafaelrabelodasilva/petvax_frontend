@@ -25,7 +25,7 @@
                 v-model="form.email"
                   type="email"
                   class="form-control"
-                  id="exampleInputEmail1"
+                  id="email"
                   aria-describedby="emailHelp"
                   placeholder="Digite seu e-mail"
                 />
@@ -43,7 +43,7 @@
                 v-model="form.password"
                   type="password"
                   class="form-control"
-                  id="exampleInputPassword1"
+                  id="password"
                   placeholder="Digite sua senha"
                 />
                 <article v-if="passError" class="text-danger mb-3">
@@ -69,7 +69,7 @@
                   >Lembrar-se de mim</label
                 >
               </div>
-              <button @click="login()" type="button" class="btn me-3">Login</button>
+              <button @click="login()" type="button" id="login" class="btn me-3">Login</button>
               <router-link to="/signup">Crie uma conta</router-link>
             </form>
           </div>
@@ -110,8 +110,8 @@ export default {
     this.alertError = '';
 
     //Utilizado o operador ternário para definir os valores de erro em uma única linha
-    this.emailError = !trimmedEmail ? 'Informe seu e-mail' : '';
-    this.passError = !trimmedPassword ? 'Informe sua senha' : '';
+    this.emailError = !trimmedEmail ? 'Informe seu e-mail.' : '';
+    this.passError = !trimmedPassword ? 'Informe sua senha.' : '';
 
     if (trimmedEmail && trimmedPassword) {
       axios
@@ -137,6 +137,10 @@ export default {
 .btn {
   background-color: #0E8388;
   color: white;
+}
+
+#container {
+  background-color: #243f3f;
 }
 
 </style>
