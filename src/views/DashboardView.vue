@@ -599,7 +599,7 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="novoProcedimento">
+              <h1 class="modal-title fs-5">
                 Cadastrar procedimento
               </h1>
               <button
