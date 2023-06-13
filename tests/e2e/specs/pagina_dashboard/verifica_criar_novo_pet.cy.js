@@ -14,24 +14,23 @@ describe('Submete formulário de login com sucesso', () => {
         cy.get('.container.justify-content-end > .col')
         .should('contain', 'Visitaram o pet')
 
-        cy.get('#cadastrarPet').click()
+        cy.get('#novoPet').click()
 
         cy.get('#nomePet').type('Romeu')
 
-        cy.get('#especiePet').click()
-        cy.get('option>Canina').click()
+        cy.get('#especiePet').should('be.visible').select('Canina')
 
-        cy.get('#generoPet').click()
-        cy.get('option>Macho').click()
+        cy.get('#generoPet').should('be.visible').select('Macho')
 
-        cy.get('#racaPet').click()
-        cy.get('option>Siamês').click()
+        cy.get('#racaPet').should('be.visible').select('Siamês')
 
-        cy.get('pesoPet').type('2')
-        cy.get('nascimentoPet').type('31/01/2023')
+        cy.get('#pesoPet').type('2')
 
-        cy.get('#castradoPet').click()
-        cy.get('option>Sim').click()
+        const moment = require('moment')
+        const data = moment('31/01/2023', 'DD/MM/YYYY').format('YYYY-MM-DD')
+        cy.get('#nascimentoPet').type(data)
+
+        cy.get('#castradoPet').should('be.visible').select('Sim')
 
         cy.get('nomeRespPet').type('Lucas')
         cy.get('sobrenomeRespPet').type('Rabelo da Silva')

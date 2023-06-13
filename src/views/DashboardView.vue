@@ -8,6 +8,7 @@
         class="d-flex align-items-center btn btn-primary me-3"
         data-bs-target="#cadastrarPet"
         data-bs-toggle="modal"
+        id="novoPet"
       >
         <i class="fas fa-plus me-2"></i>Novo pet
       </button>
