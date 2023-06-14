@@ -222,7 +222,7 @@
           <div class="col-md-8">
             <div class="card-body">
               <div class="d-flex justify-content-between">
-                <p class="fs-4 text card-title">{{ pet.petName }}</p>
+                <p id="pet-name" class="fs-4 text card-title">{{ pet.petName }}</p>
                 <a
                   @click="editarPet(pet)"
                   class=""
@@ -268,6 +268,7 @@
               data-bs-toggle="modal"
               data-bs-target="#modalDeletaPet"
               @click="openModalDeletaPet(pet._id)"
+              id="openModalDeletaPet"
               >Remover</a
             >
           </div>
