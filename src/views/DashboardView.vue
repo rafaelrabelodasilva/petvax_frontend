@@ -473,6 +473,7 @@
                                     aria-expanded="false"
                                     data-bs-target="#novoProcedimento"
                                     data-bs-toggle="modal"
+                                    id="editaProced"
                                   >
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </a>
@@ -535,6 +536,7 @@
               <button
                 type="button"
                 class="btn btn-danger"
+                id="btndeletarPet"
                 @click="deletarPet()"
                 data-bs-dismiss="modal"
               >

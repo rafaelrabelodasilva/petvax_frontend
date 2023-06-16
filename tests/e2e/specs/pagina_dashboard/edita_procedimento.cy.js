@@ -1,4 +1,4 @@
-describe('Deleta procedimento', () => {
+describe('Edita procedimento já cadastrado', () => {
 
     before(() => {
         cy.visit('http://localhost:8080/login')
@@ -14,7 +14,7 @@ describe('Deleta procedimento', () => {
 
         cy.get('#novoPet').click()
 
-        cy.get('#nomePet').type('Bolinha')
+        cy.get('#nomePet').type('Nick')
 
         cy.get('#especiePet').should('be.visible').select('Canina')
 
@@ -37,11 +37,11 @@ describe('Deleta procedimento', () => {
 
         //Precisa adicionar a validação do snackbar de que foi cadastrado com sucesso
 
-        cy.get('#petCard').contains('p#pet-name', 'Bolinha').should('exist');
+        cy.get('#petCard').contains('p#pet-name', 'Nick').should('exist');
 
         //Cadastra novo procedimento
         cy.get('#petCard')
-            .contains('p#pet-name', 'Bolinha')
+            .contains('p#pet-name', 'Nick')
             .parents('.card')
             .find('a:contains("Ver carteirinha")')
             .click();
@@ -52,7 +52,7 @@ describe('Deleta procedimento', () => {
 
         cy.get('#novoProcedimento').should('contain', 'Cadastrar procedimento')
         //Precisa validar o modal
-        cy.get('#procedureName').type('Antipulgas')
+        cy.get('#procedureName').type('Vermífugo')
         cy.get('#procedureAddInfo').type('1 comprimido')
         const procedureDate = '2023-01-31';
         cy.get('#procedureDate').invoke('val', procedureDate).trigger('input');
@@ -66,37 +66,47 @@ describe('Deleta procedimento', () => {
         cy.get('.modal-body > .modal-footer > .btn-secondary').click()
 
         cy.get('#petCard')
-            .contains('p#pet-name', 'Bolinha')
+            .contains('p#pet-name', 'Nick')
             .parents('.card')
             .find('a:contains("Procedimentos")')
             .click();
 
         cy.get('#modalVerProcedimentos').should('contain', 'Procedimentos do pet')
-        cy.get('#modalVerProcedimentos').contains('td', 'Antipulgas').should('exist');
+        cy.get('#modalVerProcedimentos').contains('td', 'Vermífugo').should('exist');
     })
 
-    it('Deleto o procedimento criado', () => {
+    it('Altero as informações do procedimento já criado', () => {
         cy.get('#modalVerProcedimentos')
             .should('be.visible')
             .within(() => {
                 cy.contains('h1.modal-title.fs-5', 'Procedimentos do pet');
             });
 
-        cy.get('[data-bs-target="#modalDeletaProced"]').click();
+        cy.get('#editaProced').click();
+        cy.wait(1000);
+
+        cy.get('#novoProcedimento').should('contain', 'Cadastrar procedimento')
+        //Precisa validar o modal
+        cy.get('#procedureName').clear().type('Teste FELVI')
+        cy.get('#procedureAddInfo').clear().type('1 vacina')
+        const procedureDate = '2023-06-15';
+        cy.get('#procedureDate').invoke('val', procedureDate).trigger('input');
+        const procedureNextOne = '2023-05-15';
+        cy.get('#procedureNextOne').invoke('val', procedureNextOne).trigger('input');
+        cy.get('#procedureRespDoctor').clear().type('Dra Maria')
+        cy.get('#novoProcedimento > .modal-dialog > .modal-content > .modal-footer > .btn-success').click();
+
+        cy.get('#modalVerProcedimentos > .modal-dialog > .modal-content > .modal-header > .btn-close').click()
+
         cy.wait(1000);
 
         cy.get('#petCard')
-            .contains('p#pet-name', 'Bolinha')
+            .contains('p#pet-name', 'Nick')
             .parents('.card')
             .find('a:contains("Procedimentos")')
-            .click({ force: true });
+            .click();
 
-        cy.get('[data-bs-target="#modalDeletaPet"]').click({ force: true });
-        cy.wait(1000);
-
-        cy.get('#btndeletarPet').click({ force: true });
-        cy.wait(1000);
-
-        cy.get('#petCard').should('not.contain', 'p#pet-name', 'Bolinha');
-    });
+        cy.get('#modalVerProcedimentos').should('contain', 'Procedimentos do pet')
+        cy.get('#modalVerProcedimentos').contains('td', 'Teste FELVI').should('exist');
+    })
 })

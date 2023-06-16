@@ -14,7 +14,7 @@ describe('Submete formulário de cadastro do novo procedimento', () => {
 
         cy.get('#novoPet').click()
 
-        cy.get('#nomePet').type('Alfred')
+        cy.get('#nomePet').type('Bolinha')
 
         cy.get('#especiePet').should('be.visible').select('Canina')
 
@@ -37,11 +37,15 @@ describe('Submete formulário de cadastro do novo procedimento', () => {
 
         //Precisa adicionar a validação do snackbar de que foi cadastrado com sucesso
 
-        cy.get('#petCard').contains('p#pet-name', 'Alfred').should('exist');
+        cy.get('#petCard').contains('p#pet-name', 'Bolinha').should('exist');
     })
 
     it('Submeto o formulário de cadastro do novo procedimento', () => {
-        cy.contains('a', 'Ver carteirinha').click()
+        cy.get('#petCard')
+        .contains('p#pet-name', 'Bolinha')
+        .parents('.card')
+        .find('a:contains("Ver carteirinha")')
+        .click();
 
         cy.contains('button', ' Procedimento ').click()
 
@@ -61,7 +65,12 @@ describe('Submete formulário de cadastro do novo procedimento', () => {
 
         cy.get('.modal-body > .modal-footer > .btn-secondary').click()
 
-        cy.contains('a', 'Procedimentos').click()
+        cy.get('#petCard')
+        .contains('p#pet-name', 'Bolinha')
+        .parents('.card')
+        .find('a:contains("Procedimentos")')
+        .click();
+
         cy.get('#modalVerProcedimentos').should('contain', 'Procedimentos do pet')
         cy.get('#modalVerProcedimentos').contains('td', 'Antipulgas').should('exist');
     })
