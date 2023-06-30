@@ -203,7 +203,8 @@
       </div>
     </div>
 
-    <div class="container d-flex flex-wrap justify-content-center" id="petCard">
+    <div class="container d-flex flex-wrap justify-content-center" 
+      id="petCard">
       <div
         class="card d-flex mx-3 my-3"
         style="max-width: 360px"
@@ -232,7 +233,7 @@
                   data-bs-toggle="modal"
                 >
                   <i class="fa-regular fa-pen-to-square"></i>
-                  Editar
+                  <!-- Editar -->
                 </a>
               </div>
 
