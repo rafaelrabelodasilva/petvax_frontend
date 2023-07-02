@@ -4,13 +4,196 @@
 
     <DashboardHeader />
 
-    <ModalCadastraPet />
+    <div
+        class="modal fade"
+        id="cadastrarPet"
+        aria-hidden="true"
+        aria-labelledby="dadosPet"
+        tabindex="-1"
+    >
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="dadosPet">
+                Formulário de cadastro do pet
+            </h1>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+            ></button>
+            </div>
+
+            <div class="modal-body">
+            <form @submit.prevent="cadastrarPet" class="row g-3">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
+                Dados do pet
+                </h1>
+
+                <div class="col-md-4">
+                <label for="nomePet" class="form-label">Nome do pet</label>
+
+                <input
+                    v-model="pet.petName"
+                    type="text"
+                    class="form-control"
+                    id="nomePet"
+                />
+                </div>
+
+                <div class="col-md-4">
+                <label for="especiePet" class="form-label">Espécie</label>
+                <select
+                    v-model="pet.petSpecies"
+                    id="especiePet"
+                    class="form-select"
+                >
+                    <option>Canina</option>
+                    <option>Felina</option>
+                </select>
+                </div>
+
+                <div class="col-md-4">
+                <label for="generoPet" class="form-label">Gênero</label>
+                <select
+                    v-model="pet.petGender"
+                    id="generoPet"
+                    class="form-select"
+                >
+                    <option>Fêmea</option>
+                    <option>Macho</option>
+                </select>
+                </div>
+
+                <div class="col-md-4">
+                <label for="racaPet" class="form-label">Raça</label>
+                <select v-model="pet.petBreed" id="racaPet" class="form-select">
+                    <option>Persa e Himalaia</option>
+                    <option>Siamês</option>
+                    <option>Maine Coon</option>
+                    <option>Angorá</option>
+                    <option>Sphynx</option>
+                    <option>Ragdoll</option>
+                    <option>Ashera</option>
+                    <option>American Shorthair</option>
+                    <option>Exótico</option>
+                    <option>Sem raça definida (SRC)</option>
+                </select>
+                </div>
+
+                <div class="col-md-4">
+                <label for="pesoPet" class="form-label">Peso do pet</label>
+                <div class="input-group">
+                    <input
+                    v-model="pet.petWeight"
+                    type="number"
+                    class="form-control"
+                    id="pesoPet"
+                    />
+                    <span class="input-group-text">kg</span>
+                </div>
+                </div>
+
+                <div class="col-md-4">
+                <label for="nascimentoPet" class="form-label">Nascimento</label>
+                <input
+                    v-model="pet.petBirth"
+                    type="date"
+                    class="form-control"
+                    id="nascimentoPet"
+                />
+                </div>
+
+                <div class="col-md-4">
+                <label for="castradoPet" class="form-label">Castrado?</label>
+                <select
+                    v-model="pet.petCastrated"
+                    id="castradoPet"
+                    class="form-select"
+                >
+                    <option>Sim</option>
+                    <option>Não</option>
+                </select>
+                </div>
+
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
+                Dados do responsável
+                </h1>
+
+                <div class="col-md-6">
+                <label for="nomeRespPet" class="form-label">Primeiro nome</label>
+                <input
+                    v-model="pet.petResponsible.petRespFirstName"
+                    type="text"
+                    class="form-control"
+                    id="nomeRespPet"
+                />
+                </div>
+
+                <div class="col-md-6">
+                <label for="sobrenomeRespPet" class="form-label">Sobrenome</label>
+                <input
+                    v-model="pet.petResponsible.petRespLastName"
+                    type="text"
+                    class="form-control"
+                    id="sobrenomeRespPet"
+                />
+                </div>
+
+                <div class="col-6">
+                <label for="contato1RespPet" class="form-label"
+                    >Contato principal</label
+                >
+                <input
+                    v-model="pet.petResponsible.petRespContact1"
+                    type="text"
+                    class="form-control"
+                    id="contato1RespPet"
+                />
+                </div>
+
+                <div class="col-6">
+                <label for="contato2RespPet" class="form-label"
+                    >Contato adicional</label
+                >
+                <input
+                    v-model="pet.petResponsible.petRespContact2"
+                    type="text"
+                    class="form-control"
+                    id="contato2RespPet"
+                />
+                </div>
+            </form>
+            </div>
+
+            <div class="modal-footer">
+            <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+            >
+                Cancelar
+            </button>
+
+            <button
+                @click="cadastrarPet()"
+                type="button"
+                class="btn btn-success"
+                data-bs-dismiss="modal"
+            >
+                Salvar
+            </button>
+            </div>
+        </div>
+        </div>
+    </div>
 
     <div class="container d-flex flex-wrap justify-content-center" 
       id="petCard">
       <div
         class="card d-flex mx-3 my-3"
-        style="max-width: 360px"
+        style="max-width: 300px"
         v-for="pet in petList"
         :key="pet._id"
       >
@@ -27,22 +210,10 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <p id="pet-name" class="fs-4 text card-title">{{ pet.petName }}</p>
-                <a
-                  @click="editarPet(pet)"
-                  class=""
-                  type=""
-                  aria-expanded="false"
-                  data-bs-target="#cadastrarPet"
-                  data-bs-toggle="modal"
-                >
-                  <i class="fa-regular fa-pen-to-square"></i>
-                  <!-- Editar -->
-                </a>
               </div>
 
               <div class="card-text mb-0">
                 <ul class="list-unstyled">
-                  <li>Nascimento: {{ pet.petBirth }}</li>
                   <li>Último procedimento: Antipulgas</li>
                 </ul>
               </div>
@@ -52,28 +223,41 @@
             class="card-footer d-flex align-items-center justify-content-around flex-wrap"
           >
             <a
-              class=""
+              class="material-symbols-outlined"
               data-bs-toggle="modal"
               data-bs-target="#modalVerCarteirinha"
+              title="Ver carteirinha"
               @click="openModalCarteirinha(pet._id)"
-              >Ver carteirinha</a
+              >content_paste_search</a
             >
 
             <a
-              class=""
+              class="material-symbols-outlined"
               data-bs-toggle="modal"
               data-bs-target="#modalVerProcedimentos"
+              title="Ver procedimentos"
               @click="openModalProcedimentos(pet._id)"
-              >Procedimentos</a
+              >vaccines</a
             >
 
             <a
-              class=""
+                  @click="editarPet(pet)"
+                  class="material-symbols-outlined"
+                  aria-expanded="false"
+                  data-bs-target="#cadastrarPet"
+                  data-bs-toggle="modal"
+                  title="Editar informações do pet"
+                >Edit
+                </a>
+
+                <a
+              class="material-symbols-outlined"
               data-bs-toggle="modal"
               data-bs-target="#modalDeletaPet"
               @click="openModalDeletaPet(pet._id)"
               id="openModalDeletaPet"
-              >Remover</a
+              title="Deletar pet"
+              >Delete</a
             >
           </div>
         </div>
@@ -169,18 +353,7 @@
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
                 >
-                  Cancelar
-                </button>
-
-                <button
-                  class="btn btn-primary"
-                  type="button"
-                  aria-expanded="false"
-                  data-bs-target="#novoProcedimento"
-                  data-bs-toggle="modal"
-                >
-                  <i class="fas fa-plus"></i>
-                  Procedimento
+                  Fechar
                 </button>
               </div>
             </div>
@@ -214,11 +387,23 @@
                   <div class="card-body">
                     <div class="container text-center">
                       <div class="d-flex justify-content-end mb-3">
+                        <button class="d-flex btn btn-primary me-2"
+                      aria-expanded="false"
+                        data-bs-target="#novoProcedimento"
+                        data-bs-toggle="modal"
+                        title="Adicionar novo procedimento">
+                        <span class="material-symbols-outlined">
+                        add
+                        </span>
+                        <span class="material-symbols-outlined">
+                        vaccines
+                        </span>
+                      </button>
                         <form class="d-flex" role="search">
                           <input
                             class="form-control me-2"
                             type="search"
-                            placeholder="Buscar"
+                            placeholder="Buscar procedimento"
                             aria-label="Search"
                           />
                           <button class="btn btn-primary" type="submit">
@@ -511,14 +696,12 @@
 import axios from "axios";
 import MainNavbar from "../components/MainNavbar.vue";
 import DashboardHeader from '../components/DashboardHeader.vue'
-import ModalCadastraPet from '../components/ModalCadastraPet.vue'
 
 export default {
   name: "DashboardView",
   components: {
     MainNavbar,
-    DashboardHeader,
-    ModalCadastraPet
+    DashboardHeader
   },
   data() {
     return {
@@ -722,5 +905,10 @@ export default {
 
 ul > li {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #2e4f4f;
 }
 </style>

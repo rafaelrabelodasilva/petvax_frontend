@@ -1,6 +1,6 @@
 <template>
     <div class="container d-flex justify-content-between mb-3">
-        <div class="fw-bold fs-5">Visitaram a clínica</div>
+        <span class="fw-bold fs-5">Visitaram a clínica</span>
         <button
         class="d-flex align-items-center btn btn-primary"
         data-bs-target="#cadastrarPet"
@@ -17,3 +17,9 @@ export default {
   name: "DashboardHeader",
 };
 </script>
+
+<style scoped>
+.span {
+  color: #2e4f4f;
+}
+</style>
