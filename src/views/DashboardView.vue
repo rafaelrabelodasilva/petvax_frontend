@@ -277,7 +277,7 @@
                   class="container d-flex flex-column justify-content-center align-items-center mt-4"
                 >
                   <img
-                    src="../assets/yuumi.png"
+                    src="../assets/gato_sentado_sem_fundo.png"
                     alt=""
                     class="d-flex"
                     style="width: 10rem; border-radius: 50%"
@@ -895,11 +895,11 @@ export default {
 }
 
 .gradient {
-  background: linear-gradient(
+  /* background: linear-gradient(
     0deg,
     rgba(255, 255, 255, 1) 9%,
     rgba(46, 79, 79, 1) 100%
-  );
+  ); */
   border-radius: 5px;
 }
 
@@ -908,6 +908,7 @@ ul > li {
 }
 
 a {
+  cursor: pointer;
   text-decoration: none;
   color: #2e4f4f;
 }

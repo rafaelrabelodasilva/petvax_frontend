@@ -1,8 +1,10 @@
 <template>
     <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid text-white navbar-brand">
-            <div class="logo">
-                PETVAX</div>
+            <div class="logo d-flex align-items-center">
+                PETVAX
+                <span class="material-symbols-outlined ms-2">vaccines</span>
+            </div>
             <div class="">
                 <ul class="navbar-nav d-flex flex-row">
                 <li class="nav-item">
@@ -45,5 +47,13 @@ export default {
 .logo {
     font-size: 25px;
     font-family: "Amaranth", sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 200,
+  'GRAD' 0,
+  'opsz' 48
 }
 </style>
