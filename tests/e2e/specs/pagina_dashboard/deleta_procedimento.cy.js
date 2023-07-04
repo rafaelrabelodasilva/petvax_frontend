@@ -9,8 +9,8 @@ describe('Deleta procedimento', () => {
 
         cy.get('#login').click()
 
-        cy.get('.container.justify-content-end > .col')
-            .should('contain', 'Visitaram o pet')
+        cy.get('.justify-content-between > .fs-5')
+        .should('contain', 'Pets cadastrados')
 
         cy.get('#novoPet').click()
 
