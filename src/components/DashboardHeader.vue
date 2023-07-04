@@ -1,15 +1,28 @@
 <template>
-    <div class="container d-flex justify-content-between mb-3">
-        <span class="fw-bold fs-5">Visitaram a clínica</span>
-        <button
-        class="d-flex align-items-center btn btn-primary"
+  <div class="container d-flex justify-content-between mb-3">
+    <span class="fs-5">Pets cadastrados</span>
+    <div class="d-flex">
+      <button
+        class="d-flex align-items-center btn btn-primary me-2"
         data-bs-target="#cadastrarPet"
         data-bs-toggle="modal"
         id="novoPet"
-        >
-        <i class="fas fa-plus me-2"></i>Novo pet
-        </button>
+        title="Cadastrar novo pet"
+      >
+        <span class="material-symbols-outlined me-1"> add </span>
+        Novo pet
+      </button>
+      <!-- <form class="d-flex" role="search">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Buscar pet"
+        aria-label="Search"
+      />
+      <button class="btn btn-primary" type="submit">Buscar</button>
+    </form> -->
     </div>
+  </div>
 </template>
 
 <script>

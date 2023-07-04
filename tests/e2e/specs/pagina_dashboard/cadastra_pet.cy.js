@@ -11,12 +11,12 @@ describe('Submete formulário de cadastro do novo pet com sucesso', () => {
 
         cy.get('#login').click()
 
-        cy.get('.container.justify-content-end > .col')
-        .should('contain', 'Visitaram o pet')
+        cy.get('.justify-content-between > .fs-5')
+        .should('contain', 'Pets cadastrados')
 
         cy.get('#novoPet').click()
 
-        cy.get('#nomePet').type('Baudo')
+        cy.get('#nomePet').type('Thor')
 
         cy.get('#especiePet').should('be.visible').select('Canina')
 
@@ -39,6 +39,6 @@ describe('Submete formulário de cadastro do novo pet com sucesso', () => {
 
         //Precisa adicionar a validação do snackbar de que foi cadastrado com sucesso
 
-        cy.get('#petCard').contains('p#pet-name', 'Baudo').should('exist');
+        cy.get('#petCard').contains('p#pet-name', 'Thor').should('exist');
     })
 })
