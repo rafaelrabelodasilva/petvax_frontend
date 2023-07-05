@@ -1,6 +1,6 @@
 <template>
-  <div class="container d-flex justify-content-between mb-3">
-    <span class="fs-5">Pets cadastrados</span>
+  <div class="container d-flex justify-content-between mb-3" id="dashboard-header">
+    <span class="fs-5" id="dashboard-title">Pets cadastrados</span>
     <div class="d-flex">
       <button
         class="d-flex align-items-center btn btn-primary me-2"

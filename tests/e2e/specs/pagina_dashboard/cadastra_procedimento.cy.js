@@ -1,3 +1,8 @@
+//Precisa de revisão porque o modal procedimentos fica aberto ao mesmo tempo
+//Ou seja quando é adicionado um novo procedimento e salvo o modal procedimentos
+//fica aberto na automação apenas
+// Alternativa seria colocar um botão de fechar abaixo ao invés de usar o X
+
 describe('Submete formulário de cadastro do novo procedimento', () => {
 
     before(() => {
@@ -14,7 +19,7 @@ describe('Submete formulário de cadastro do novo procedimento', () => {
 
         cy.get('#novoPet').click()
 
-        cy.get('#nomePet').type('Yuumi')
+        cy.get('#nomePet').type('Bolinha')
 
         cy.get('#especiePet').should('be.visible').select('Canina')
 
@@ -37,17 +42,17 @@ describe('Submete formulário de cadastro do novo procedimento', () => {
 
         //Precisa adicionar a validação do snackbar de que foi cadastrado com sucesso
 
-        cy.get('#petCard').contains('p#pet-name', 'Yuumi').should('exist');
+        cy.get('#petCard').contains('p#pet-name', 'Bolinha').should('exist');
     })
 
     it('Submeto o formulário de cadastro do novo procedimento', () => {
         cy.get('#petCard')
-        .contains('p#pet-name', 'Yuumi')
+        .contains('p#pet-name', 'Bolinha')
         .parents('.card')
-        .find('a:contains("content_paste_search")')
+        .find('a:contains("vaccines")')
         .click();
 
-        cy.contains('button', ' Procedimento ').click()
+        cy.contains('button', ' vaccines ').click()
 
         cy.wait(1000);
 
@@ -60,15 +65,14 @@ describe('Submete formulário de cadastro do novo procedimento', () => {
         cy.get('#procedureNextOne').invoke('val', procedureNextOne).trigger('input');
         cy.get('#procedureRespDoctor').type('Dra Léia')
         cy.get('#novoProcedimento > .modal-dialog > .modal-content > .modal-footer > .btn-success').click();
-
         cy.wait(1000);
-
-        cy.get('.modal-body > .modal-footer > .btn-secondary').click()
+        cy.get('#modalVerProcedimentos > .modal-dialog > .modal-content > .modal-footer > .btn')
+        .click()
 
         cy.get('#petCard')
-        .contains('p#pet-name', 'Yuumi')
+        .contains('p#pet-name', 'Bolinha')
         .parents('.card')
-        .find('a:contains("Procedimentos")')
+        .find('a:contains("vaccines")')
         .click();
 
         cy.get('#modalVerProcedimentos').should('contain', 'Procedimentos do pet')

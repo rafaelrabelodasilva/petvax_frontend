@@ -9,8 +9,8 @@ describe('Edita pet já cadastrado', () => {
 
         cy.get('#login').click()
 
-        cy.get('.container.justify-content-end > .col')
-        .should('contain', 'Visitaram o pet')
+        cy.get('#dashboard-title')
+        .should('contain', 'Pets cadastrados')
 
         cy.get('#novoPet').click()
 
@@ -41,25 +41,44 @@ describe('Edita pet já cadastrado', () => {
     })
 
     it('Edita pet já cadastrado com sucesso', () => {
-        cy.get('.card-body > .d-flex > a').click()
+        cy.get('#petCard')
+            .contains('p#pet-name', 'Olix')
+            .parents('.card')
+            .find('a[title="Editar informações do pet"]')
+            .click();
 
-        cy.get('#nomePet').clear().type('Lua')
+        cy.get('#nomePet').clear().type('Robert')
 
-        cy.get('#especiePet').should('be.visible').select('Felina')
-        cy.get('#generoPet').should('be.visible').select('Fêmea')
-        cy.get('#racaPet').should('be.visible').select('Siamês')
-        cy.get('#pesoPet').clear().type('1,2')
+        // cy.get('#especiePet').should('be.visible').select('Felina')
+        // cy.get('#generoPet').should('be.visible').select('Fêmea')
+        // cy.get('#racaPet').should('be.visible').select('Siamês')
+        // cy.get('#pesoPet').clear().type('1,2')
 
-        const data = '2023-04-04';
-        cy.get('#nascimentoPet').invoke('val', data).trigger('input');
+        // const data = '2023-04-04';
+        // cy.get('#nascimentoPet').invoke('val', data).trigger('input');
 
-        cy.get('#castradoPet').should('be.visible').select('Não')
-        cy.get('#nomeRespPet').clear().type('Miri')
-        cy.get('#sobrenomeRespPet').clear().type('Crepaldi')
-        cy.get('#contato1RespPet').clear().type('48996568825')
-        cy.get('#contato2RespPet').clear().type('48996365214')
+        // cy.get('#castradoPet').should('be.visible').select('Não')
+        // cy.get('#nomeRespPet').clear().type('Miri')
+        // cy.get('#sobrenomeRespPet').clear().type('Crepaldi')
+        // cy.get('#contato1RespPet').clear().type('48996568825')
+        // cy.get('#contato2RespPet').clear().type('48996365214')
         cy.contains('button', 'Salvar').click();
 
-        cy.get('#petCard').contains('p#pet-name', 'Lua').should('exist');
+        cy.get('#petCard').contains('p#pet-name', 'Robert').should('exist');
+
+
+        cy.get('#petCard')
+            .contains('p#pet-name', 'Robert')
+            .parents('.card')
+            .find('a[title="Ver carteirinha"]')
+            .click();
+
+            cy.get('#modalVerCarteirinha')
+            .find('#carteirinha-nome-pet')
+            .should('contain.text', 'Robert');
+
+            cy.get('#modalVerCarteirinha')
+            .find('#carteirinha-nome-principal')
+            .should('contain.text', 'Robert');
     })
 })

@@ -9,8 +9,8 @@ describe('Submete formulário de cadastro do novo pet com sucesso', () => {
 
         cy.get('#login').click()
 
-        cy.get('.container.justify-content-end > .col')
-        .should('contain', 'Visitaram o pet')
+        cy.get('#dashboard-title')
+        .should('contain', 'Pets cadastrados')
 
         cy.get('#novoPet').click()
 
@@ -41,7 +41,11 @@ describe('Submete formulário de cadastro do novo pet com sucesso', () => {
     })
 
     it('Deleta pet criado', () => {
-        cy.contains('a', 'Remover').click();
+        cy.get('#petCard')
+            .contains('p#pet-name', 'Lua')
+            .parents('.card')
+            .find('a[title="Deletar pet"]')
+            .click();
         cy.wait(1000);
         cy.get('#modalDeletaPet').should('contain', 'Remover pet')
         cy.contains('button', 'Remover').click();
