@@ -202,7 +202,7 @@
             <img
               src="../assets/gato_sentado_sem_fundo.png"
               class="img-fluid rounded-start"
-              alt="..."
+              alt="Imagem gatinho sentado"
             />
           </div>
 
@@ -283,39 +283,39 @@
                     style="width: 10rem; border-radius: 50%"
                     id="petPicture"
                   />
-                  <p class="fs-2 text text-uppercase">
+                  <p class="fs-2 text text-uppercase" id="carteirinha-nome-principal">
                     {{ pet.petName }}
                   </p>
                 </div>
 
                 <div class="container mb-4">
-                  <h6 class="fs-6 text text-uppercase fw-bold">Dados do pet</h6>
+                  <h6 class="fs-6 text text-uppercase fw-bold" id="carteirinha-dados-pet">Dados do pet</h6>
                   <ul class="d-flex flex-column align-items-start p-0 m-0">
-                    <li>
+                    <li id="carteirinha-nome-pet">
                       Nome do pet:
                       {{ pet.petName }}
                     </li>
-                    <li>
+                    <li id="carteirinha-especie-pet">
                       Espécie:
                       {{ pet.petSpecies }}
                     </li>
-                    <li>
+                    <li id="carteirinha-genero-pet">
                       Gênero:
                       {{ pet.petGender }}
                     </li>
-                    <li>
+                    <li id="carteirinha-nascimento-pet">
                       Nascimento:
                       {{ pet.petBirth }}
                     </li>
-                    <li>
+                    <li id="carteirinha-raca-pet">
                       Raça:
                       {{ pet.petBreed }}
                     </li>
-                    <li>
+                    <li id="carteirinha-peso-pet">
                       Peso do pet:
                       {{ pet.petWeight }}
                     </li>
-                    <li>
+                    <li id="carteirinha-castrado-pet">
                       Pet castrado:
                       {{ pet.petCastrated }}
                     </li>
@@ -323,11 +323,11 @@
                 </div>
 
                 <div class="container mb-3">
-                  <h6 class="fs-6 text text-uppercase fw-bold">
+                  <h6 class="fs-6 text text-uppercase fw-bold" id="carteirinha-dados-resp">
                     Dados do responsável
                   </h6>
                   <ul class="d-flex flex-column align-items-start p-0 m-0">
-                    <li>
+                    <li id="carteirinha-resp-nome-completo">
                       Nome:
                       {{
                         pet.petResponsible.petRespFirstName +
@@ -335,11 +335,11 @@
                         pet.petResponsible.petRespLastName
                       }}
                     </li>
-                    <li>
+                    <li id="carteirinha-resp-contato1">
                       Contato principal:
                       {{ pet.petResponsible.petRespContact1 }}
                     </li>
-                    <li>
+                    <li id="carteirinha-resp-contato2">
                       Contato adicional:
                       {{ pet.petResponsible.petRespContact2 }}
                     </li>
@@ -373,12 +373,6 @@
               <h1 class="modal-title fs-5" id="exampleModalLabel">
                 Procedimentos do pet
               </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
             </div>
 
             <div class="modal-body">
@@ -388,10 +382,10 @@
                     <div class="container text-center">
                       <div class="d-flex justify-content-end mb-3">
                         <button class="d-flex btn btn-primary me-2"
-                      aria-expanded="false"
-                        data-bs-target="#novoProcedimento"
-                        data-bs-toggle="modal"
-                        title="Adicionar novo procedimento">
+                          aria-expanded="false"
+                          data-bs-target="#novoProcedimento"
+                          data-bs-toggle="modal"
+                          title="Adicionar novo procedimento">
                         <span class="material-symbols-outlined">
                         add
                         </span>
@@ -485,6 +479,16 @@
                 </div>
               </div>
             </div>
+
+            <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Fechar
+                </button>
+              </div>
           </div>
         </div>
       </div>
@@ -799,10 +803,10 @@ export default {
         this.error = "Ocorreu um erro ao buscar a lista de pets.";
       }
     },
-
     async openModalProcedimentos(petId) {
       try {
         const resposta = await axios.get(`/procedure/pet/${petId}`);
+        this.petProcedure.petId = petId
         this.procedureList = resposta.data;
       } catch (error) {
         console.error(error);
@@ -839,6 +843,7 @@ export default {
       }
     },
     salvarProced() {
+      console.log(this.petProcedure, this.pet)
       if(!this.petProcedure._id) {
         axios
         .post('/procedure', this.petProcedure)
