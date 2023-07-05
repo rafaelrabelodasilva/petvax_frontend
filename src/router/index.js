@@ -2,11 +2,11 @@ import { createRouter, createWebHistory } from 'vue-router' //Para remover a # d
 // import HomeView from '../views/HomeView.vue'
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: HomeView
-  // },
+  {
+    path: '/',
+    name: 'home',
+    component: DashboardView
+  },
   {
     path: '/login',
     name: 'login',
