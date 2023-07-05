@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router' //Para remover a # da URL
-// import HomeView from '../views/HomeView.vue'
+import DashboardView from '../views/DashboardView.vue'
 
 const routes = [
   {
