@@ -76,13 +76,13 @@ No card exibido quando algum pet está cadastrado podemos acessar as seguintes f
 
 ![img](./src/img/procedimentos_pet.png "Exibindo procedimentos do pet")
 
-    - Adicionar novo procedimento: nesta opção será exibido ao usuário um formulário de cadastro de um novo procedimento.
+- Adicionar novo procedimento: nesta opção será exibido ao usuário um formulário de cadastro de um novo procedimento.
 
 ![img](./src/img/modal_novo_procedimento.png "Exibindo modal novo procedimento")
 
-    - Buscar: ação não implementada.
+- Buscar: ação não implementada.
 
-    - Listagem: será listado ao usuário todos os procedimentos cadastrados para o pet selecionado. Essas informações vem do MongoDB.
+- Listagem: será listado ao usuário todos os procedimentos cadastrados para o pet selecionado. Essas informações vem do MongoDB.
 
 - Editar informações do pet: nesta opção será exibido um formulário com todas as informações pertinentes ao pet já cadastrado. Aqui o usuário poderá alterar qualquer informação que após ser salva será automaticamente atualizado na carteirinha do pet. Essas informações vem do MongoDB.
 
