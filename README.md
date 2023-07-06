@@ -10,6 +10,21 @@ A aplicação está dividida em:
 - [Tela de cadastro](#tela-de-cadastro)
 - [Dashboard](#dashboard)
 
+### Requisitos
+
+Certifique-se de ter as seguintes dependências instaladas antes de prosseguir:
+
+- Node.js (versão 18.15.0)
+
+## Instalação
+
+Siga as instruções abaixo para configurar e instalar o projeto:
+
+1. Clone o repositório: `git clone https://github.com/rafaelrabelodasilva/petvax-frontend`
+2. Acesse o diretório do projeto: `cd frontend`
+3. Instale as dependências: `npm install`
+
+
 ## Dependências
 
 Neste projeto foi utilizado as seguintes dependências:
@@ -32,9 +47,10 @@ A aplicação ficou bastante precária, o que resultou em várias das possibilid
 
 ![img](./src/img/automacao_front.png "Exibindo automação do front com o Cypress")
 
-Para executar os testes basta digitar no terminal:
+Para executar os testes, siga as etapas abaixo:
 
-`npm run cypress`
+1. Certifique-se de que o servidor local esteja em execução.
+2. No terminal, execute o comando: `npm run cypress`
 
 ## Telas e funcionalidades
 
@@ -93,3 +109,18 @@ No card exibido quando algum pet está cadastrado podemos acessar as seguintes f
 **Sair**
 
 Desloga o usuário da aplicação, por debaixo dos panos é removido o user_token do local storage do navegador.
+
+## Contribuição
+
+Se você deseja contribuir para o projeto, siga as etapas abaixo:
+
+1. Faça um fork do projeto.
+2. Crie uma nova branch: `git checkout -b feature/sua-feature`
+3. Faça as alterações desejadas no código.
+4. Faça commit das suas alterações: `git commit -m 'Adiciona sua feature'`
+5. Envie as alterações para o repositório remoto: `git push origin feature/sua-feature`
+6. Abra um pull request no repositório original.
+
+## Contato
+
+Para mais informações, entre em contato pelo meu [LinkedIn](https://www.linkedin.com/in/rafaelrabelodasilva/)
